@@ -17,6 +17,34 @@
   export let iconStyle = '';
 </script>
 
-<button>
+<button class="s-component s-button">
   <slot />
 </button>
+
+<style>
+  .s-button {
+    z-index: 10;
+    position: relative;
+    padding: 0.5rem 1rem;
+
+    text-transform: uppercase;
+    font-size: var(--font-size-small);
+    line-height: var(--line-height-small);
+    font-weight: var(--font-weight-medium);
+
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #FFFFFF;
+
+    border-radius: var(--border-radius-rounded);
+    box-shadow: var(--shadow);
+    border-style: solid;
+    overflow: hidden;
+    transition: var(--transition-duration) ease-in;
+  }
+
+  .s-button:hover {
+    cursor: pointer;
+    filter: var(--brighten);
+  }
+</style>
