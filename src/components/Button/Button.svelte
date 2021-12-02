@@ -1,6 +1,9 @@
 <script>
+  // TODO figure out fab
+  import createRipple from '../../js/ripple.js';
+
   export let value = false;
-  export let color = 'primary';
+  export let color = 'var(--primary-color)';
   export let outlined = false;
   export let text = false;
   export let block = false;
@@ -15,9 +18,11 @@
   export let iconKlass = '';
   export let style = '';
   export let iconStyle = '';
+
+  const ripple = createRipple((text || outlined) ? color : '#FFFFFF');
 </script>
 
-<button class="s-component s-button">
+<button class="s-component s-button" use:ripple>
   <slot />
 </button>
 
