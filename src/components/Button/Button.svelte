@@ -1,5 +1,5 @@
 <script>
-  import { current_component } from 'svelte/internal';
+  import { get_current_component } from 'svelte/internal';
 
   import createRipple from '../../js/ripple.js';
   import { forwardEventsBuilder } from '../../js/forwardEvents.js';
@@ -24,7 +24,7 @@
   export let style = '';
   export let iconStyle = '';
 
-  const forwardEvents = forwardEventsBuilder(current_component);
+  const forwardEvents = forwardEventsBuilder(get_current_component());
 
   $: actualColor = getColor(color);
   $: ripple = createRipple((text || outlined) ? actualColor : '#FFFFFF');
