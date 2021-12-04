@@ -26,6 +26,8 @@
   <Button block disabled>
     Disabled Button
   </Button>
+
+  <Button color="alert" icon="change_history" />
 </div>
 
 <style>

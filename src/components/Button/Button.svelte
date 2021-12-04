@@ -3,6 +3,8 @@
   import createRipple from '../../js/ripple.js';
   import { getColor } from '../../js/utils.js';
 
+  import Icon from '../Icon/Icon.svelte';
+
   export let value = false;
   export let color = 'var(--primary-color)';
   export let outlined = false;
@@ -31,10 +33,14 @@
   class:dark
   class:block
   class:outlined
+  class:icon={Boolean(icon)}
   {disabled}
   {style}
   use:ripple
 >
+  {#if icon}
+    <Icon {small}>{icon}</Icon>
+  {/if}
   <slot />
 </button>
 
@@ -108,5 +114,11 @@
     box-shadow: none;
     filter: none;
     cursor: default;
+  }
+
+  .icon {
+    border-radius: 9999px;
+    padding: 1rem;
+    height: 3.5rem;
   }
 </style>

@@ -26,6 +26,8 @@
   :root {
     --font-size-small: .875rem;
     --line-height-small: 1.25rem;
+    --font-size-medium: 1rem;
+    --line-height-medium: 1.5rem;
     --font-weight-medium: 500;
     --border-radius-rounded: 0.25rem;
     --border-width: 1px;
