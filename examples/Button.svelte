@@ -28,6 +28,8 @@
   </Button>
 
   <Button color="alert" icon="change_history" />
+
+  <Button color="error" icon="change_history" text light flat />
 </div>
 
 <style>

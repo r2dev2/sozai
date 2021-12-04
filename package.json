@@ -1,14 +1,13 @@
 {
-  "name": "SvelteComponent",
+  "name": "sozai",
+  "version": "0.1.0",
+  "description": "UI framework with material components build with Svelte and without Tailwind CSS",
   "svelte": "src/index.js",
-  "module": "dist/index.mjs",
-  "main": "dist/index.js",
   "scripts": {
     "build": "rollup -c",
     "build:examples": "cd examples && rollup -c",
     "dev": "cd examples && rollup -c -w",
-    "start": "sirv examples --no-clear",
-    "prepublishOnly": "npm run build"
+    "start": "sirv examples --no-clear"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^17.0.0",
@@ -22,10 +21,9 @@
     "sirv-cli": "^1.0.0"
   },
   "keywords": [
-    "svelte"
+    "svelte", "material-design"
   ],
   "files": [
-    "src",
-    "dist"
+    "src"
   ]
 }

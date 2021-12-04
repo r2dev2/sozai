@@ -34,6 +34,7 @@
   class:block
   class:outlined
   class:icon={Boolean(icon)}
+  class:flat
   {disabled}
   {style}
   use:ripple
@@ -85,13 +86,19 @@
     width: 100%;
   }
 
-  .outlined {
+  .outlined, .flat {
+    --hover-opacity: 0.2;
     background-color: transparent;
     color: var(--button-color);
     box-shadow: none;
   }
 
-  .outlined:hover::after {
+  .flat {
+    --hover-opacity: 0.05;
+    border: 0px;
+  }
+
+  .outlined:hover::after, .flat:hover::after {
     content: '';
 
     position: absolute;
@@ -103,8 +110,7 @@
     height: 100%;
 
     background-color: var(--button-color);
-    filter: var(--darken);
-    opacity: 0.2;
+    opacity: var(--hover-opacity, 0.2);
   }
 
   [disabled], [disabled]:hover {

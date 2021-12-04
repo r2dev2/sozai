@@ -28,6 +28,7 @@
     font-size: 1.5rem;
     line-height: 1;
     letter-spacing: normal;
+    color: var(--color);
     text-transform: none;
     display: inline-block;
     white-space: nowrap;
