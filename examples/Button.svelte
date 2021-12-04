@@ -23,6 +23,10 @@
     Outlined Button
   </Button>
 
+  <Button text>
+    Text Button
+  </Button>
+
   <Button block disabled>
     Disabled Button
   </Button>
@@ -30,6 +34,10 @@
   <Button color="alert" icon="change_history" />
 
   <Button color="error" icon="change_history" text light flat />
+
+  <Button on:click={() => console.log('button clicked')}>
+    Clickable Button
+  </Button>
 </div>
 
 <style>

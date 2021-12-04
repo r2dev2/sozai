@@ -1,5 +1,10 @@
+/**
+ * From smelte
+ */
+
 // Thanks Lagden! https://svelte.dev/repl/61d9178d2b9944f2aa2bfe31612ab09f?version=3.6.7
-// modified to use css color instead of tailwind class color
+// smelte: modified to use css color instead of tailwind class color
+// sozai: modified to use js styles instead of tailwind classes
 function ripple(color, centered) {
   return function(event) {
     const target = event.currentTarget;

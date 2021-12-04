@@ -1,6 +1,8 @@
 <script>
-  // TODO figure out fab
+  import { current_component } from 'svelte/internal';
+
   import createRipple from '../../js/ripple.js';
+  import { forwardEventsBuilder } from '../../js/forwardEvents.js';
   import { getColor } from '../../js/utils.js';
 
   import Icon from '../Icon/Icon.svelte';
@@ -22,6 +24,8 @@
   export let style = '';
   export let iconStyle = '';
 
+  const forwardEvents = forwardEventsBuilder(current_component);
+
   $: actualColor = getColor(color);
   $: ripple = createRipple((text || outlined) ? actualColor : '#FFFFFF');
   $: style = `--button-color: ${actualColor};`;
@@ -35,8 +39,10 @@
   class:outlined
   class:icon={Boolean(icon)}
   class:flat
+  class:text
   {disabled}
   {style}
+  use:forwardEvents
   use:ripple
 >
   {#if icon}
@@ -86,19 +92,22 @@
     width: 100%;
   }
 
-  .outlined, .flat {
+  .outlined, .text {
     --hover-opacity: 0.2;
     background-color: transparent;
-    color: var(--button-color);
     box-shadow: none;
   }
 
-  .flat {
+  .text {
     --hover-opacity: 0.05;
     border: 0px;
   }
 
-  .outlined:hover::after, .flat:hover::after {
+  .outlined, .flat, .text {
+    color: var(--button-color);
+  }
+
+  .outlined:hover::after, .text:hover::after {
     content: '';
 
     position: absolute;
