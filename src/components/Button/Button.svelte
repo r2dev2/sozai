@@ -1,6 +1,7 @@
 <script>
   // TODO figure out fab
   import createRipple from '../../js/ripple.js';
+  import { getColor } from '../../js/utils.js';
 
   export let value = false;
   export let color = 'var(--primary-color)';
@@ -19,10 +20,21 @@
   export let style = '';
   export let iconStyle = '';
 
-  const ripple = createRipple((text || outlined) ? color : '#FFFFFF');
+  $: actualColor = getColor(color);
+  $: ripple = createRipple((text || outlined) ? actualColor : '#FFFFFF');
+  $: style = `--button-color: ${actualColor};`;
 </script>
 
-<button class="s-component s-button" use:ripple>
+<button
+  class="s-component s-button"
+  class:light
+  class:dark
+  class:block
+  class:outlined
+  {disabled}
+  {style}
+  use:ripple
+>
   <slot />
 </button>
 
@@ -31,17 +43,19 @@
     z-index: 10;
     position: relative;
     padding: 0.5rem 1rem;
+    width: max-content;
 
     text-transform: uppercase;
     font-size: var(--font-size-small);
     line-height: var(--line-height-small);
     font-weight: var(--font-weight-medium);
 
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
+    background-color: var(--button-color);
+    border-color: var(--button-color);
     color: #FFFFFF;
 
     border-radius: var(--border-radius-rounded);
+    border-width: var(--border-width);
     box-shadow: var(--shadow);
     border-style: solid;
     overflow: hidden;
@@ -51,5 +65,48 @@
   .s-button:hover {
     cursor: pointer;
     filter: var(--brighten);
+  }
+
+  .light {
+    filter: var(--brighten);
+  }
+
+  .dark, .dark:hover {
+    filter: var(--darken);
+  }
+
+  .block {
+    width: 100%;
+  }
+
+  .outlined {
+    background-color: transparent;
+    color: var(--button-color);
+    box-shadow: none;
+  }
+
+  .outlined:hover::after {
+    content: '';
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: var(--button-color);
+    filter: var(--darken);
+    opacity: 0.2;
+  }
+
+  [disabled], [disabled]:hover {
+    background-color: var(--disabled-bg-color);
+    border-color: var(--disabled-bg-color);
+    color: var(--disabled-text-color);
+    box-shadow: none;
+    filter: none;
+    cursor: default;
   }
 </style>

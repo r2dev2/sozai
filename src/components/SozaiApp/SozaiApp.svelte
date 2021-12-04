@@ -28,10 +28,42 @@
     --line-height-small: 1.25rem;
     --font-weight-medium: 500;
     --border-radius-rounded: 0.25rem;
-    --primary-color: #b027b0;
+    --border-width: 1px;
+
+    /* Customizable colors */
+    --primary-color: #B027B0;
+    --secondary-color: #009688;
+    --error-color: #F44336;
+    --success-color: #4CAF50;
+    --alert-color: #FF9800;
+    --dark-color: #212121;
+
+    /* Material pallete colors */
+    --red: #F44336;
+    --pink: #E91E63;
+    --purple: #9C27B0;
+    --deep-purple: #673AB7;
+    --indigo: #3F51B5;
+    --blue: #2196F3;
+    --light-blue: #03A9F4;
+    --cyan: #00BCD4;
+    --teal: #009688;
+    --green: #4CAF50;
+    --light-green: #8BC34A;
+    --lime: #CDDC39;
+    --yellow: #FFEB3B;
+    --amber: #FFC107;
+    --orange: #FF9800;
+    --brown: #795548;
+
+    /* Internal colors */
+    --disabled-bg-color: #E0E0E0; /* found from inspecting smeltejs docs */
+    --disabled-text-color: #9E9E9E; /* found from inspecting smeltejs docs */
+
     --brighten: brightness(110%);
     --darken: brightness(90%);
     --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+
     --transition-duration: 200ms;
     --ripple-centered-duration: 400ms;
     --ripple-normal-duration: 600ms;
