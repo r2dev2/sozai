@@ -28,11 +28,11 @@
 
   $: actualColor = getColor(color);
   $: ripple = createRipple((text || outlined) ? actualColor : '#FFFFFF');
-  $: style = `--button-color: ${actualColor};`;
+  $: style = `--button-color: ${actualColor}; ${style}`.trim();
 </script>
 
 <button
-  class="s-component s-button"
+  class="s-component s-button {klass}"
   class:light
   class:dark
   class:block

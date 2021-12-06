@@ -4,12 +4,15 @@
   export let reverse = false;
   export let tip = false;
   export let color = '';
+  export let klass = '';
+  export let style = '';
 
-  $: style = color ? `--color: ${color}` : '';
+  $: style = `${color ? `--color: ${color};` : ''} ${style}`.trim();
 </script>
 
 <i
   aria-hidden
+  class={klass}
   class:reverse
   class:tip
   class:small
