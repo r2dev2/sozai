@@ -61,6 +61,8 @@
     /* Internal colors */
     --disabled-bg-color: #E0E0E0; /* found from inspecting smeltejs docs */
     --disabled-text-color: #9E9E9E; /* found from inspecting smeltejs docs */
+    --input-bg-color: #f3f4f6;
+    --input-text-color: #4b5563;
 
     --brighten: brightness(110%);
     --darken: brightness(90%);

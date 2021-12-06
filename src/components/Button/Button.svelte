@@ -8,7 +8,7 @@
   import Icon from '../Icon/Icon.svelte';
 
   export let value = false;
-  export let color = 'var(--primary-color)';
+  export let color = 'primary';
   export let outlined = false;
   export let text = false;
   export let block = false;
