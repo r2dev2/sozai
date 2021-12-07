@@ -5,6 +5,9 @@
   import { forwardEventsBuilder } from '../../js/forwardEvents.js';
   import { getColor } from '../../js/utils.js';
 
+  import Label from './Label.svelte';
+  import Underline from './Underline.svelte';
+
   export let value = '';
   export let color = 'primary';
   export let label = '';
@@ -26,6 +29,7 @@
   export let bgColor = 'white';
   export let disabled = false;
   export let focused = false;
+  export let dense = false;
 
   onMount(() => {
     // TODO implement Label component
@@ -38,16 +42,34 @@
 
   const forwardEvents = forwardEventsBuilder(get_current_component());
 
+  $: labelOnTop = placeholder || focused || (value || value === 0);
   $: actualColor = getColor(color);
   $: style = `--color: ${actualColor}`;
 </script>
 
-<div>
+<div class="s-component">
+  {#if label}
+    <slot name="label">
+      <Label
+        {labelOnTop}
+        {focused}
+        {error}
+        {outlined}
+        {prepend}
+        {color}
+        {bgColor}
+        dense={dense && !outlined}
+      >
+        {label}
+      </Label>
+    </slot>
+  {/if}
+
   {#if (!textarea && !select) || autocomplete}
     <input
       aria-label={label}
       bind:value
-      class="s-component s-input"
+      class="s-input"
       class:outlined
       class:error
       {disabled}
@@ -57,10 +79,18 @@
       placeholder={!value ? placeholder : ''}
     />
   {/if}
+  <Underline
+    {noUnderline}
+    {outlined}
+    {focused}
+    {error}
+    {color}
+  />
 </div>
 
 <style>
   div {
+    position: relative;
     margin: 0.5rem 0 1.5rem 0;
     color: var(--input-text-color);
   }
@@ -68,9 +98,18 @@
   .s-input {
     border-radius: 0.25rem 0.25rem 0 0;
     padding: 1.5rem 1rem 0.5rem 1rem;
+    box-sizing: border-box;
     width: 100%;
 
-    background-color: var(--input-background-color);
+    background-color: var(--input-bg-color);
     color: black;
+
+    border: 0;
+
+    font-size: 100%;
+  }
+
+  .s-input:focus {
+    outline: none;
   }
 </style>

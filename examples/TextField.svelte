@@ -11,6 +11,6 @@
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    max-width: 48rem;
+    max-width: min(70%, 48rem);
   }
 </style>

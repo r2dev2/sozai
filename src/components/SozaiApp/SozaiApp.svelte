@@ -73,6 +73,10 @@
     --ripple-normal-duration: 600ms;
   }
 
+  div {
+    font-family: roboto,medium;
+  }
+
   div :global(.s-component) {
     font-family: roboto,medium !important;
   }
