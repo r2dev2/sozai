@@ -98,6 +98,7 @@
   .s-input {
     border-radius: 0.25rem 0.25rem 0 0;
     padding: 1.5rem 1rem 0.5rem 1rem;
+    margin-bottom: 0px;
     box-sizing: border-box;
     width: 100%;
 
