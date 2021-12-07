@@ -110,6 +110,7 @@
   }
 
   .s-input:focus {
+    background-color: var(--input-bg-focus-color);
     outline: none;
   }
 </style>

@@ -1,9 +1,12 @@
 <script>
   import { TextField } from '..';
+
+  let value = '';
 </script>
 
 <div>
-  <TextField label="Test Label" />
+  <p>Entered: {value}</p>
+  <TextField bind:value label="Test Label" />
 </div>
 
 <style>
