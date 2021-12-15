@@ -68,6 +68,7 @@
     --input-text-color: #4B5563;
     --light-dialog-bg-color: #FFFFFF;
     --dark-dialog-bg-color: #424242;
+    --dialog-bg-color: var(--light-dialog-bg-color);
 
     --brighten: brightness(110%);
     --darken: brightness(90%);

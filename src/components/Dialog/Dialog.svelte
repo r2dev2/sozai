@@ -8,7 +8,7 @@
   export let value = false;
   export let opacity = 0.5;
   export let persistent = false;
-  export let color = 'white';
+  export let color = 'var(--dialog-bg-color)';
 
   export let transitionProps = { duration: 150, easing: quadIn, delay: 150 };
 
