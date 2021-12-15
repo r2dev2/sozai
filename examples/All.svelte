@@ -2,10 +2,12 @@
   import { SozaiApp } from '../src';
   import Button from './Button.svelte';
   import TextField from './TextField.svelte';
+  import Dialog from './Dialog.svelte';
 
   const components = {
     button: Button,
-    textfield: TextField
+    textfield: TextField,
+    dialog: Dialog
   }
 
   let toShow = new URLSearchParams(location.search).get('com');

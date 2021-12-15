@@ -29,6 +29,8 @@
     --font-size-medium: 1rem;
     --line-height-medium: 1.5rem;
     --font-weight-medium: 500;
+    --font-size-large: 1.25rem;
+    --font-weight-bold: 700;
     --border-radius-rounded: 0.25rem;
     --border-width: 1px;
 
@@ -80,6 +82,14 @@
 
   div :global(.s-component) {
     font-family: roboto,medium !important;
+  }
+
+  /* TODO: do the rest of the headers */
+  div :global(h5) {
+    font-weight: 400;
+    font-size: 1.5rem;
+    letter-spacing: 0;
+    margin: 0; /* do for rest of headers as well */
   }
 
   div :global(.ripple) {
