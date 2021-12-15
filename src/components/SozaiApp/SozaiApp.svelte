@@ -66,6 +66,8 @@
     --input-bg-color: #F3F4F6;
     --input-bg-focus-color: #D1D5DB;
     --input-text-color: #4B5563;
+    --light-dialog-bg-color: #FFFFFF;
+    --dark-dialog-bg-color: #424242;
 
     --brighten: brightness(110%);
     --darken: brightness(90%);

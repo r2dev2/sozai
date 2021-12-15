@@ -3,17 +3,20 @@
   import { onMount } from 'svelte';
   import { quadIn } from 'svelte/easing';
   import Scrim from '../Util/Scrim.svelte';
+  import { getColor } from '../../js/utils.js';
 
   export let value = false;
   export let opacity = 0.5;
   export let persistent = false;
+  export let color = 'white';
 
   export let transitionProps = { duration: 150, easing: quadIn, delay: 150 };
 
+  $: style = `--color: ${getColor(color)}`;
 </script>
 
 {#if value}
-  <div class="s-component dialog-overlay">
+  <div class="s-component dialog-overlay" {style}>
     <Scrim {opacity} on:click={() => !persistent && (value = false)} />
     <div class="s-dialog-container">
       <div class="s-dialog" in:scale={transitionProps}>
@@ -55,7 +58,7 @@
     align-items: center;
     border-radius: var(--border-radius-rounded);
     box-shadow: var(--shadow);
-    background-color: white;
+    background-color: var(--color);
   }
 
   .title {
