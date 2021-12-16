@@ -120,4 +120,8 @@
     background-color: var(--input-bg-focus-color);
     outline: none;
   }
+
+  .s-input.error {
+    caret-color: var(--error-color);
+  }
 </style>

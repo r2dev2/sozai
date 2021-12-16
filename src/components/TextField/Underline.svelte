@@ -11,7 +11,7 @@
 </script>
 
 <div class="line-container" class:hidden={noUnderline || outlined} {style}>
-  <div class="line" class:focused />
+  <div class="line" class:focused class:error />
 </div>
 
 <style>
@@ -33,7 +33,11 @@
     transition: width 200ms ease;
   }
 
-  .focused {
+  .focused, .error {
     width: 100%;
+  }
+
+  .error {
+    background-color: var(--error-color);
   }
 </style>

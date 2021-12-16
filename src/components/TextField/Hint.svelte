@@ -1,4 +1,4 @@
-<svelte:options immutable tag="sozai-hint" />
+<svelte:options immutable />
 
 <script>
   export let error = '';

@@ -45,4 +45,8 @@
   .focused {
     color: var(--color);
   }
+
+  .error {
+    color: var(--error-color);
+  }
 </style>
