@@ -10,13 +10,14 @@
     dialog: Dialog
   }
 
-  let toShow = new URLSearchParams(location.search).get('com');
+  let toShow = window.localStorage.getItem('com') ?? new URLSearchParams(location.search).get('com');
 
   $: if (!components[toShow]) {
     toShow = 'button';
   }
 
   $: component = components[toShow];
+  $: window.localStorage.setItem('com', toShow);
 </script>
 
 <SozaiApp>
