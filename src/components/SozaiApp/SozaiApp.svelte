@@ -24,7 +24,8 @@
 
 <style>
   :root {
-    --font-size-small: .875rem;
+    --font-size-x-small: 0.75rem;
+    --font-size-small: 0.875rem;
     --line-height-small: 1.25rem;
     --font-size-medium: 1rem;
     --line-height-medium: 1.5rem;
@@ -69,6 +70,7 @@
     --light-dialog-bg-color: #FFFFFF;
     --dark-dialog-bg-color: #424242;
     --dialog-bg-color: var(--light-dialog-bg-color);
+    --hint-color: #757575;
 
     --brighten: brightness(110%);
     --darken: brightness(90%);

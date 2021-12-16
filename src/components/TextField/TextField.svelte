@@ -6,6 +6,7 @@
   import { getColor } from '../../js/utils.js';
 
   import Label from './Label.svelte';
+  import Hint from './Hint.svelte';
   import Underline from './Underline.svelte';
 
   export let value = '';
@@ -14,8 +15,7 @@
   export let placeholder = '';
   export let outlined = false;
   export let hint = '';
-  /** @type {string | boolean} */
-  export let error = false;
+  export let error = '';
   export let append = '';
   export let prepend = '';
   export let persistentHint = false;
@@ -42,6 +42,7 @@
 
   const forwardEvents = forwardEventsBuilder(get_current_component());
 
+  $: showHint = error || (persistentHint ? hint : focused && hint);
   $: labelOnTop = placeholder || focused || (value || value === 0);
   $: actualColor = getColor(color);
   $: style = `--color: ${actualColor}`;
@@ -79,6 +80,7 @@
       placeholder={!value ? placeholder : ''}
     />
   {/if}
+
   <Underline
     {noUnderline}
     {outlined}
@@ -86,6 +88,10 @@
     {error}
     {color}
   />
+
+  {#if showHint}
+    <Hint {error} {hint} />
+  {/if}
 </div>
 
 <style>
