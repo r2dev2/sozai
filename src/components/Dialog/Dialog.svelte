@@ -9,6 +9,7 @@
   export let opacity = 0.5;
   export let persistent = false;
   export let color = 'var(--dialog-bg-color)';
+  export let klass = '';
 
   export let transitionProps = { duration: 150, easing: quadIn, delay: 150 };
 
@@ -16,7 +17,7 @@
 </script>
 
 {#if value}
-  <div class="s-component dialog-overlay" {style}>
+  <div class="s-component s-dialog-overlay {klass}" {style}>
     <Scrim {opacity} on:click={() => !persistent && (value = false)} />
     <div class="s-dialog-container">
       <div class="s-dialog" in:scale={transitionProps}>
@@ -33,7 +34,7 @@
 {/if}
 
 <style>
-  .dialog-overlay {
+  .s-dialog-overlay {
     position: fixed;
     top: 0;
     left: 0;

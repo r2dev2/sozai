@@ -30,6 +30,8 @@
   export let disabled = false;
   export let focused = false;
   export let dense = false;
+  export let klass = '';
+  export let style = '';
 
   onMount(() => {
     // TODO implement Label component
@@ -48,7 +50,7 @@
   $: style = `--color: ${actualColor}`;
 </script>
 
-<div class="s-component s-input-container" {style}>
+<div class="s-component s-input-container {klass}" {style}>
   {#if label}
     <slot name="label">
       <Label
