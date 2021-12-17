@@ -10,21 +10,41 @@
   export let bgColor = 'white';
   export let dense = false;
 
-  $: style = `--color: ${getColor(color)}`;
+  let labelWidth = 0;
+
+  $: style = `--color: ${getColor(color)}; --label-width: ${labelWidth}px;`;
 </script>
 
-<label
-  class:error
-  class:outlined
-  class:top={labelOnTop}
-  class:dense
-  class:focused
-  {style}
->
-  <slot />
-</label>
+<div class="s-label" {style}>
+  <div class="outlined-cover" class:cover={outlined && labelOnTop} />
+  
+  <label
+    bind:clientWidth={labelWidth}
+    class:error
+    class:outlined
+    class:top={labelOnTop}
+    class:dense
+    class:focused
+  >
+    <slot />
+  </label>
+</div>
 
 <style>
+  .outlined-cover {
+    position: absolute;
+    top: -.375rem;
+    left: 0.5rem;
+    background-color: white;
+    height: 11px;
+    width: 0.001px;
+    /* get cubic bezier from vuetify */
+    transition: width var(--transition-duration) cubic-bezier(.25,.8,.5,1);
+  }
+  .cover {
+    width: calc(0.5rem + 0.75 * var(--label-width));
+  }
+
   label {
     position: absolute;
     top: 1.125rem;
@@ -58,7 +78,6 @@
   /* TODO make it actually do a vuetify-like textfield animation where one sees the border disappearing */
   /* Notes: they do it by putting a figureset > legend at top and expanding the legend's width */
   .outlined.top {
-    background-color: white; /* TODO check actual bg color */
     transform: translateY(-1.5rem) scale(.75);
   }
 </style>

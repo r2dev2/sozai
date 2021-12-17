@@ -131,7 +131,6 @@
     border: var(--outlined-border-color) 1px solid;
     border-radius: var(--border-radius-rounded);
     background-color: #00000000;
-    transition: ease-in var(--transition-duration);
   }
 
   .s-input.outlined:focus {

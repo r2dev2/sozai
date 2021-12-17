@@ -38,6 +38,6 @@
   }
 
   :root {
-    --transition-duration: 300ms;
+    --transition-duration: 300ms !important;
   }
 </style>
