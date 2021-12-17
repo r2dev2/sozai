@@ -107,7 +107,7 @@
 
     background-color: var(--input-bg-color);
     caret-color: var(--color);
-    color: black;
+    color: var(--input-text-color);
 
     border: 0;
 

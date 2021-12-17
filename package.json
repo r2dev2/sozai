@@ -1,6 +1,6 @@
 {
   "name": "sozai",
-  "version": "0.3.13",
+  "version": "0.3.14",
   "license": "MIT",
   "description": "UI framework with material components build with Svelte and without Tailwind CSS",
   "svelte": "src/index.js",
@@ -13,7 +13,9 @@
   "devDependencies": {
     "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-node-resolve": "^9.0.0",
+    "prismjs": "^1.25.0",
     "rollup": "^2.0.0",
+    "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-css-only": "^3.1.0",
     "rollup-plugin-livereload": "^2.0.0",
     "rollup-plugin-svelte": "^7.0.0",
