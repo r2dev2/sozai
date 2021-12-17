@@ -27,19 +27,20 @@
 <style>
   label {
     position: absolute;
-    top: 0;
-    padding: 1rem 1rem 0.5rem 1rem;
+    top: 1.125rem;
+    left: 0.75rem;
+    right: auto;
 
     cursor: text;
     pointer-events: none;
 
     line-height: var(--line-height-medium);
-    transition: font-size 50ms, line-height 100ms;
+    transition: var(--transition-duration);
   }
 
   .top {
-    line-height: 0.05;
-    font-size: 0.7rem;
+    transform-origin: top left;
+    transform: translateY(-0.875rem) scale(.75);
   }
 
   .focused {
@@ -50,11 +51,13 @@
     color: var(--error-color);
   }
 
+  .outlined {
+    top: 1rem;
+  }
+
   /* TODO make it actually do a vuetify-like textfield animation where one sees the border disappearing */
   .outlined.top {
-    margin-top: 0rem;
-    margin-left: 0.75rem;
-    padding: 0 0.25rem 0.25rem 0.25rem;
     background-color: white; /* TODO check actual bg color */
+    transform: translateY(-1.5rem) scale(.75);
   }
 </style>

@@ -103,12 +103,13 @@
 
   .s-input {
     border-radius: 0.25rem 0.25rem 0 0;
-    padding: 1.5rem 1rem 0.5rem 1rem;
+    padding: 1.5rem 0.75rem 0.5rem 0.75rem;
     margin-bottom: 0px;
     box-sizing: border-box;
     width: 100%;
 
     background-color: var(--input-bg-color);
+    caret-color: var(--color);
     color: black;
 
     border: 0;
@@ -126,7 +127,7 @@
   }
 
   .s-input.outlined {
-    padding: 1rem;
+    padding: 1rem 0.75rem;
     border: var(--outlined-border-color) 1px solid;
     border-radius: var(--border-radius-rounded);
     background-color: #00000000;

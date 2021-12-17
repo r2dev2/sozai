@@ -14,7 +14,7 @@
 <style>
   .s-hint {
     position: absolute;
-    padding: 0.25rem 0 1rem 0.25rem;
+    padding: 0.25rem 0 1rem 0.75rem;
     font-size: var(--font-size-x-small);
   }
 

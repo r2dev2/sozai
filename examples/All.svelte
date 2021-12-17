@@ -36,4 +36,8 @@
   div {
     padding-top: 1rem;
   }
+
+  :root {
+    --transition-duration: 300ms;
+  }
 </style>
