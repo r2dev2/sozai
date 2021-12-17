@@ -49,4 +49,12 @@
   .error {
     color: var(--error-color);
   }
+
+  /* TODO make it actually do a vuetify-like textfield animation where one sees the border disappearing */
+  .outlined.top {
+    margin-top: 0rem;
+    margin-left: 0.75rem;
+    padding: 0 0.25rem 0.25rem 0.25rem;
+    background-color: white; /* TODO check actual bg color */
+  }
 </style>

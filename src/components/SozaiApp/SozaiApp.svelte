@@ -71,6 +71,7 @@
     --dark-dialog-bg-color: #424242;
     --dialog-bg-color: var(--light-dialog-bg-color);
     --hint-color: #757575;
+    --outlined-border-color: #EEEEEE;
 
     --brighten: brightness(110%);
     --darken: brightness(90%);

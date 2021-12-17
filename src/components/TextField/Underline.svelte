@@ -15,6 +15,10 @@
 </div>
 
 <style>
+  .hidden {
+    display: none;
+  }
+
   .line-container {
     position: absolute;
     bottom: 0;

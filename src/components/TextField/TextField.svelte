@@ -48,7 +48,7 @@
   $: style = `--color: ${actualColor}`;
 </script>
 
-<div class="s-component">
+<div class="s-component s-input-container" {style}>
   {#if label}
     <slot name="label">
       <Label
@@ -123,5 +123,17 @@
 
   .s-input.error {
     caret-color: var(--error-color);
+  }
+
+  .s-input.outlined {
+    padding: 1rem;
+    border: var(--outlined-border-color) 1px solid;
+    border-radius: var(--border-radius-rounded);
+    background-color: #00000000;
+    transition: ease-in var(--transition-duration);
+  }
+
+  .s-input.outlined:focus {
+    border-color: var(--color);
   }
 </style>
