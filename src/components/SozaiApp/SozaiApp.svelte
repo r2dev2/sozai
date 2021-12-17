@@ -62,11 +62,13 @@
     --brown: #795548;
 
     /* Internal colors */
+    --app-bg-color: white;
     --disabled-bg-color: #E0E0E0; /* found from inspecting smeltejs docs */
     --disabled-text-color: #9E9E9E; /* found from inspecting smeltejs docs */
     --input-bg-color: #F3F4F6;
     --input-bg-focus-color: #D1D5DB;
-    --input-text-color: #4B5563;
+    --input-label-text-color: #4B5563;
+    --input-text-color: black;
     --light-dialog-bg-color: #FFFFFF;
     --dark-dialog-bg-color: #424242;
     --dialog-bg-color: var(--light-dialog-bg-color);

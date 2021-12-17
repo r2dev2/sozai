@@ -26,17 +26,12 @@
   export let noUnderline = false;
   export let appendReverse = false;
   export let prependReverse = false;
-  export let bgColor = 'white';
+  export let bgColor = 'var(--app-bg-color)';
   export let disabled = false;
   export let focused = false;
   export let dense = false;
   export let klass = '';
   export let style = '';
-
-  onMount(() => {
-    // TODO implement Label component
-    console.warn('Label component has not been implemented yet');
-  });
 
   const toggleFocus = () => {
     focused = !focused;

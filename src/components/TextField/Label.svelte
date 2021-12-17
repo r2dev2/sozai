@@ -7,12 +7,12 @@
   export let labelOnTop = false;
   export let prepend = false;
   export let color = 'primary';
-  export let bgColor = 'white';
+  export let bgColor = 'var(--app-bg-color)';
   export let dense = false;
 
   let labelWidth = 0;
 
-  $: style = `--color: ${getColor(color)}; --label-width: ${labelWidth}px;`;
+  $: style = `--color: ${getColor(color)}; --bg-color: ${bgColor}; --label-width: ${labelWidth}px;`;
 </script>
 
 <div class="s-label" {style}>
@@ -35,12 +35,13 @@
     position: absolute;
     top: -.375rem;
     left: 0.5rem;
-    background-color: white;
     height: 11px;
     width: 0.001px;
+    background-color: var(--bg-color);
     /* get cubic bezier from vuetify */
     transition: width var(--transition-duration) cubic-bezier(.25,.8,.5,1);
   }
+
   .cover {
     width: calc(0.5rem + 0.75 * var(--label-width));
   }
@@ -75,8 +76,6 @@
     top: 1rem;
   }
 
-  /* TODO make it actually do a vuetify-like textfield animation where one sees the border disappearing */
-  /* Notes: they do it by putting a figureset > legend at top and expanding the legend's width */
   .outlined.top {
     transform: translateY(-1.5rem) scale(.75);
   }
