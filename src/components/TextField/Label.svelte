@@ -30,6 +30,7 @@
     top: 1.125rem;
     left: 0.75rem;
     right: auto;
+    transform-origin: top left;
 
     cursor: text;
     pointer-events: none;
@@ -39,7 +40,6 @@
   }
 
   .top {
-    transform-origin: top left;
     transform: translateY(-0.875rem) scale(.75);
   }
 
@@ -56,6 +56,7 @@
   }
 
   /* TODO make it actually do a vuetify-like textfield animation where one sees the border disappearing */
+  /* Notes: they do it by putting a figureset > legend at top and expanding the legend's width */
   .outlined.top {
     background-color: white; /* TODO check actual bg color */
     transform: translateY(-1.5rem) scale(.75);
