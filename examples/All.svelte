@@ -1,4 +1,6 @@
 <script>
+  import 'prismjs';
+
   import { SozaiApp } from '../src';
   import Button from './Button.svelte';
   import TextField from './TextField.svelte';

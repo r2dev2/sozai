@@ -1,11 +1,16 @@
 <script>
   import { Button } from '..';
+  import Example from './Example.svelte';
+
+  const filename = 'Button.svelte';
 </script>
 
 <div>
-  <Button>
-    Basic Button
-  </Button>
+  <Example name="basic-button" {filename}>
+    <Button>
+      Basic Button
+    </Button>
+  </Example>
   
   <Button light>
     Light Button
