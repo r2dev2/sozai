@@ -1,54 +1,65 @@
 <script>
   import { Button } from '..';
   import Example from './Example.svelte';
+  import Examples from './Examples.svelte';
 
   const filename = 'Button.svelte';
 </script>
 
-<div>
+<Examples name="Button">
   <Example name="basic-button" {filename}>
     <Button>
       Basic Button
     </Button>
   </Example>
+
+  <Example name="light-button" {filename}>
+    <Button light>
+      Light Button
+    </Button>
+  </Example>
   
-  <Button light>
-    Light Button
-  </Button>
-  
-  <Button dark>
-    Dark Button
-  </Button>
+  <Example name="dark-button" {filename}>
+    <Button dark>
+      Dark Button
+    </Button>
+  </Example>
 
-  <Button color="alert" dark block>
-    Block Button
-  </Button>
+  <Example name="bloc-button" {filename}>
+    <Button color="alert" dark block>
+      Block Button
+    </Button>
+  </Example>
 
-  <Button color="secondary" light block outlined>
-    Outlined Button
-  </Button>
+  <Example name="outlined-button" {filename}>
+    <Button color="secondary" light block outlined>
+      Outlined Button
+    </Button>
+  </Example>
 
-  <Button text>
-    Text Button
-  </Button>
+  <Example name="text-button" {filename}>
+    <Button text>
+      Text Button
+    </Button>
+  </Example>
 
-  <Button block disabled>
-    Disabled Button
-  </Button>
+  <Example name="disabled-button" {filename}>
+    <Button block disabled>
+      Disabled Button
+    </Button>
+  </Example>
 
-  <Button color="alert" icon="change_history" />
+  <Example name="fab-button" {filename}>
+    <Button color="alert" icon="change_history" />
+  </Example>
 
-  <Button color="error" icon="change_history" text light flat />
+  <Example name="clearbg-fab-button" {filename}>
+    <Button color="error" icon="change_history" text light flat />
+  </Example>
 
-  <Button on:click={() => console.log('button clicked')}>
-    Clickable Button
-  </Button>
-</div>
-
-<style>
-  div {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-</style>
+  <Example name="click-button" {filename}>
+    <Button on:click={() => console.log('button clicked')}>
+      Clickable Button
+    </Button>
+  </Example>
+</Examples>

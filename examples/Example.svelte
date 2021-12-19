@@ -1,5 +1,6 @@
 <script>
   import Prism from 'prismjs';
+  import 'prism-svelte';
   import 'prismjs/themes/prism.css';
 
   import { getExample } from './example.js';
@@ -12,13 +13,19 @@
 
 </script>
 
-<div class="example">
-  <div class="example-content">
+<tr>
+  <td class="example-content">
     <slot />
-  </div>
-  <div class="example-src">
-    <pre class="language-html">
-      {@html Prism.highlight($exampleSource, Prism.languages.html)}
+  </td>
+  <td class="example-src">
+    <pre class="language-svelte">
+      {@html Prism.highlight($exampleSource, Prism.languages.svelte, 'svelte')}
     </pre>
-  </div>
-</div>
+  </td>
+</tr>
+
+<style>
+  .example-content {
+    text-align: center;
+  }
+</style>
