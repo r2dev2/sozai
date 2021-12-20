@@ -119,10 +119,6 @@
     outline: none;
   }
 
-  .s-input.error {
-    caret-color: var(--error-color);
-  }
-
   .s-input.outlined {
     padding: 1rem 0.75rem;
     border: var(--outlined-border-color) 1px solid;
@@ -132,5 +128,10 @@
 
   .s-input.outlined:focus {
     border-color: var(--color);
+  }
+
+  .s-input.error,.s-input.error:focus {
+    caret-color: var(--error-color);
+    border-color: var(--error-color);
   }
 </style>
