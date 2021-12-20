@@ -88,7 +88,7 @@
     font-family: roboto,medium;
   }
 
-  div :global(.s-component) {
+  div :global(.s-component), div :global(.s-component textarea) {
     font-family: roboto,medium !important;
   }
 

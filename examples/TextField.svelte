@@ -26,9 +26,11 @@
     <Example name="outlined-error-textfield" {filename}>
       <TextField label="Outlined with error" outlined error="Test error" />
     </Example>
+    <Example name="basic-textarea-textfield" {filename}>
+      <TextField label="Basic textarea" textarea rows="4" />
+    </Example>
     <Example name="outlined-textarea-textfield" {filename}>
-      <!-- Not implemented yet -->
-      <TextField label="Outlined textarea" textarea rows="5" outlined />
+      <TextField label="Outlined textarea" textarea rows="4" outlined color="blue" />
     </Example>
   </Examples>
 </div>

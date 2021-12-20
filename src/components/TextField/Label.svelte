@@ -57,7 +57,7 @@
     pointer-events: none;
 
     line-height: var(--line-height-medium);
-    transition: var(--transition-duration);
+    transition: transform var(--transition-duration);
   }
 
   .top {

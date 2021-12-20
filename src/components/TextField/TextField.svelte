@@ -76,6 +76,20 @@
       use:forwardEvents
       placeholder={!value ? placeholder : ''}
     />
+  {:else if textarea && !select}
+    <textarea
+      {rows}
+      aria-label={label}
+      bind:value
+      class="s-input textarea"
+      class:outlined
+      class:error
+      {disabled}
+      on:focus={toggleFocus}
+      on:blur={toggleFocus}
+      use:forwardEvents
+      placeholder={!value ? placeholder : ''}
+    />
   {/if}
 
   <Underline
@@ -96,6 +110,7 @@
     position: relative;
     margin: 0.5rem 0 1.5rem 0;
     color: var(--input-text-color);
+    text-align: left;
   }
 
   .s-input {
@@ -133,5 +148,9 @@
   .s-input.error,.s-input.error:focus {
     caret-color: var(--error-color);
     border-color: var(--error-color);
+  }
+
+  textarea {
+    resize: vertical;
   }
 </style>
