@@ -1,12 +1,20 @@
 <svelte:options immutable />
 
 <script>
+  import { fly } from 'svelte/transition';
+  import { quadOut } from 'svelte/easing';
+
   export let error = '';
   export let hint = '';
-  // TODO figure out why and how transition stuff
+  export let transitionProps = { y: -10, duration: 100, easing: quadOut };
 </script>
 
-<div class="s-hint" class:error={Boolean(error)} class:hint={Boolean(hint)}>
+<div
+  class="s-hint"
+  class:error={Boolean(error)}
+  class:hint={Boolean(hint)}
+  transition:fly={transitionProps}
+>
   {hint}
   {error}
 </div>
