@@ -16,6 +16,7 @@
   /** @type {string | null} */
   export let icon = null;
   export let small = false;
+  export let dense = false;
   export let light = false;
   export let dark = false;
   export let flat = false;
@@ -37,6 +38,7 @@
   class:dark
   class:block
   class:outlined
+  class:dense
   class:icon={Boolean(icon)}
   class:flat
   class:text
@@ -46,7 +48,7 @@
   use:ripple
 >
   {#if icon}
-    <Icon {small}>{icon}</Icon>
+    <Icon {dense} {small}>{icon}</Icon>
   {/if}
   <slot />
 </button>
@@ -136,4 +138,11 @@
     padding: 1rem;
     height: 3.5rem;
   }
+
+  .dense.icon {
+    padding: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
 </style>

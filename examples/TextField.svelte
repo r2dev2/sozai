@@ -18,7 +18,7 @@
       <TextField label="Error" error="Test error" />
     </Example>
     <Example name="outlined-textfield" {filename}>
-      <TextField label="Outlined" outlined />
+      <TextField label="Outlined" outlined value="bru" />
     </Example>
     <Example name="outlined-hint-textfield" {filename}>
       <TextField label="Outlined with hint" outlined hint="Test hint" />

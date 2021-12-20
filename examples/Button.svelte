@@ -50,16 +50,18 @@
   </Example>
 
   <Example name="fab-button" {filename}>
+    <!-- Fab button -->
     <Button color="alert" icon="change_history" />
   </Example>
 
-  <Example name="clearbg-fab-button" {filename}>
-    <Button color="error" icon="change_history" text light flat />
+  <Example name="dense-fab-button" {filename}>
+    <!-- Dense fab button -->
+    <Button color="green" icon="change_history" dense />
   </Example>
 
-  <Example name="click-button" {filename}>
-    <Button on:click={() => console.log('button clicked')}>
-      Clickable Button
-    </Button>
+  <Example name="clearbg-fab-button" {filename}>
+    <!-- Clear background button -->
+    <Button color="error" icon="change_history" text light flat dense />
   </Example>
+
 </Examples>
