@@ -1,6 +1,15 @@
+<svelte:options immutable />
+
 <script>
+  import { onMount } from 'svelte';
+  import { fontLoaded } from '../../js/store.js';
+
   export let noicon = false;
   export let nofont = false;
+
+  $: if (nofont) {
+    fontLoaded.set(true);
+  }
 </script>
 
 <svelte:head>
@@ -12,6 +21,7 @@
   {/if}
   {#if !nofont}
     <link
+      on:load={() => fontLoaded.set(true)}
       href="https://fonts.googleapis.com/css?family=Roboto:300,400,500|Material+Icons&display=swap"
       rel="stylesheet"
     />

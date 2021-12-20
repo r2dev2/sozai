@@ -1,4 +1,6 @@
 <script>
+  import { tick } from 'svelte';
+  import { fontLoaded } from '../../js/store.js';
   import { getColor } from '../../js/utils.js';
 
   export let focused = false;
@@ -11,12 +13,16 @@
   export let bgColor = 'var(--app-bg-color)';
 
   let labelWidth = 0;
+  let loaded = false;
 
+  $: if (labelWidth > 0 && $fontLoaded) {
+    tick().then(() => loaded = true);
+  }
   $: style = `--color: ${getColor(color)}; --bg-color: ${bgColor}; --label-width: ${labelWidth}px;`;
 </script>
 
 <div class="s-label" {style}>
-  <div class="outlined-cover" class:cover={outlined && labelOnTop} />
+  <div class="outlined-cover" class:cover={outlined && labelOnTop} class:loaded />
   
   <label
     bind:clientWidth={labelWidth}
@@ -38,6 +44,9 @@
     height: 11px;
     width: 0.001px;
     background-color: var(--bg-color);
+  }
+
+  .outlined-cover.loaded {
     /* get cubic bezier from vuetify */
     transition: width var(--transition-duration) cubic-bezier(.25,.8,.5,1);
   }
