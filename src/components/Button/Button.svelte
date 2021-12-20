@@ -151,4 +151,9 @@
     display: flex;
     justify-content: center;
   }
+
+  /* need to translate them because flex center still looks slightly lobsided */
+  .icon-content :global(i) {
+    transform: translateX(1px);
+  }
 </style>
