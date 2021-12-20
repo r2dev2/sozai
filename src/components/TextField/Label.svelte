@@ -4,11 +4,11 @@
   export let focused = false;
   export let error = false;
   export let outlined = false;
+  export let filled = false;
   export let labelOnTop = false;
   export let prepend = false;
   export let color = 'primary';
   export let bgColor = 'var(--app-bg-color)';
-  export let dense = false;
 
   let labelWidth = 0;
 
@@ -21,9 +21,9 @@
   <label
     bind:clientWidth={labelWidth}
     class:error
+    class:filled
     class:outlined
     class:top={labelOnTop}
-    class:dense
     class:focused
   >
     <slot />
@@ -48,8 +48,7 @@
 
   label {
     position: absolute;
-    top: 1.125rem;
-    left: 0.75rem;
+    top: 0.5rem;
     right: auto;
     transform-origin: top left;
 
@@ -60,7 +59,16 @@
     transition: transform var(--transition-duration);
   }
 
+  .filled, .outlined {
+    top: 1.125rem;
+    left: 0.75rem;
+  }
+
   .top {
+    transform: translateY(-1.125rem) scale(0.75);
+  }
+
+  .top.filled, .top.outlined {
     transform: translateY(-0.875rem) scale(.75);
   }
 

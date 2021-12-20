@@ -26,6 +26,9 @@
     <Example name="outlined-error-textfield" {filename}>
       <TextField label="Outlined with error" outlined error="Test error" />
     </Example>
+    <Example name="filled-textfield" {filename}>
+      <TextField label="Filled" filled />
+    </Example>
     <Example name="basic-textarea-textfield" {filename}>
       <TextField label="Basic textarea" textarea rows="4" />
     </Example>

@@ -14,6 +14,7 @@
   export let label = '';
   export let placeholder = '';
   export let outlined = false;
+  export let filled = false;
   export let hint = '';
   export let error = '';
   export let append = '';
@@ -29,7 +30,6 @@
   export let bgColor = 'var(--app-bg-color)';
   export let disabled = false;
   export let focused = false;
-  export let dense = false;
   export let klass = '';
   export let style = '';
 
@@ -53,10 +53,10 @@
         {focused}
         {error}
         {outlined}
+        {filled}
         {prepend}
         {color}
         {bgColor}
-        dense={dense && !outlined}
       >
         {label}
       </Label>
@@ -68,6 +68,7 @@
       aria-label={label}
       bind:value
       class="s-input"
+      class:filled
       class:outlined
       class:error
       {disabled}
@@ -82,6 +83,7 @@
       aria-label={label}
       bind:value
       class="s-input textarea"
+      class:filled
       class:outlined
       class:error
       {disabled}
@@ -101,7 +103,7 @@
   />
 
   {#if showHint}
-    <Hint {error} {hint} />
+    <Hint {error} {hint} beeg={outlined || filled} />
   {/if}
 </div>
 
@@ -115,12 +117,11 @@
 
   .s-input {
     border-radius: 0.25rem 0.25rem 0 0;
-    padding: 1.5rem 0.75rem 0.625rem 0.75rem;
+    padding: 0.5rem 0;
     margin-bottom: 0px;
     box-sizing: border-box;
     width: 100%;
 
-    background-color: var(--input-bg-color);
     caret-color: var(--color);
     color: var(--input-text-color);
 
@@ -130,8 +131,19 @@
   }
 
   .s-input:focus {
-    background-color: var(--input-bg-focus-color);
     outline: none;
+  }
+
+  .s-input.filled, .s-input.outlined {
+    padding: 1.5rem 0.75rem 0.625rem 0.75rem;
+  }
+
+  .s-input.filled {
+    background-color: var(--input-bg-color);
+  }
+
+  .s-input.filled:focus {
+    background-color: var(--input-bg-focus-color);
   }
 
   .s-input.outlined {
