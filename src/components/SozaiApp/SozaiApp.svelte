@@ -36,9 +36,15 @@
     --border-width: 1px;
 
     /* Customizable colors */
+    /* Smelte uses #B027B0 as primary color but vuetify uses the blue which looks nicer */
+    /* Smelte's choices:
     --primary-color: #B027B0;
     --secondary-color: #009688;
     --error-color: #F44336;
+    */
+    --primary-color: #2196F3;
+    --secondary-color: #424242;
+    --error-color: #FF5252;
     --success-color: #4CAF50;
     --alert-color: #FF9800;
     --dark-color: #212121;

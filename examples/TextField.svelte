@@ -12,7 +12,7 @@
       <TextField label="Basic" />
     </Example>
     <Example name="hint-textfield" {filename}>
-      <TextField label="Hint" hint="Test hint" persistentHint color="blue" />
+      <TextField label="Hint" hint="Test hint" persistentHint />
     </Example>
     <Example name="error-textfield" {filename}>
       <TextField label="Error" error="Test error" />

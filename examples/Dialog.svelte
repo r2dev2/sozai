@@ -21,7 +21,7 @@
     </Dialog>
 
     <!-- Activator Button -->
-    <Button color="blue" on:click={() => showFirstDialog = true}>Show Dialog</Button>
+    <Button on:click={() => showFirstDialog = true}>Show Dialog</Button>
   </Example>
   
   <Example name="persistent-dialog" {filename}>
