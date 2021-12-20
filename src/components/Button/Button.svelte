@@ -48,7 +48,9 @@
   use:ripple
 >
   {#if icon}
-    <Icon {dense} {small}>{icon}</Icon>
+    <div class="icon-content">
+      <Icon {dense} {small}>{icon}</Icon>
+    </div>
   {/if}
   <slot />
 </button>
@@ -145,4 +147,8 @@
     height: 2.5rem;
   }
 
+  .icon-content {
+    display: flex;
+    justify-content: center;
+  }
 </style>
