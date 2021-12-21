@@ -15,6 +15,7 @@
   export let placeholder = '';
   export let outlined = false;
   export let filled = false;
+  export let dense = false;
   export let hint = '';
   export let error = '';
   export let append = '';
@@ -50,6 +51,7 @@
     <slot name="label">
       <Label
         {labelOnTop}
+        {dense}
         {focused}
         {error}
         {outlined}
@@ -68,6 +70,7 @@
       aria-label={label}
       bind:value
       class="s-input"
+      class:dense
       class:filled
       class:outlined
       class:error
@@ -83,6 +86,7 @@
       aria-label={label}
       bind:value
       class="s-input textarea"
+      class:dense
       class:filled
       class:outlined
       class:error
@@ -138,8 +142,12 @@
     outline: none;
   }
 
-  .s-input.filled, .s-input.outlined {
+  .s-input.filled {
     padding: 1.5rem 0.75rem 0.625rem 0.75rem;
+  }
+
+  .s-input.dense {
+    padding: 1px;
   }
 
   .s-input.filled {
@@ -161,6 +169,14 @@
     padding: calc(1rem - 1px) calc(0.75rem - 1px);
     border-width: 2px;
     border-color: var(--color);
+  }
+
+  .s-input.outlined.dense {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .s-input.outlined.dense:focus {
+    padding: calc(0.5rem - 1px) calc(0.75rem - 1px);
   }
 
   .s-input.error,.s-input.error:focus,.s-input.error:hover {

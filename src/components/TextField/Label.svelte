@@ -3,6 +3,7 @@
   import { fontLoaded } from '../../js/store.js';
   import { getColor } from '../../js/utils.js';
 
+  export let dense = false;
   export let focused = false;
   export let error = false;
   export let outlined = false;
@@ -26,6 +27,7 @@
   
   <label
     bind:clientWidth={labelWidth}
+    class:dense
     class:error
     class:filled
     class:outlined
@@ -68,17 +70,38 @@
     transition: transform var(--transition-duration);
   }
 
-  .filled, .outlined {
+  .filled {
     top: 1.125rem;
     left: 0.75rem;
+  }
+
+  .outlined {
+    top: 1rem;
+    left: 0.75rem;
+  }
+
+  .dense {
+    top: 0;
+  }
+
+  .dense.outlined {
+    top: 0.5rem;
   }
 
   .top {
     transform: translateY(-1.125rem) scale(0.75);
   }
 
-  .top.filled, .top.outlined {
-    transform: translateY(-0.875rem) scale(.75);
+  .top.filled {
+    transform: translateY(-0.875rem) scale(0.75);
+  }
+
+  .top.outlined {
+    transform: translateY(-1.5rem) scale(0.75);
+  }
+
+  .top.dense {
+    transform: translateY(-1rem) scale(0.75);
   }
 
   .focused {
@@ -87,13 +110,5 @@
 
   .error {
     color: var(--error-color);
-  }
-
-  .outlined {
-    top: 1rem;
-  }
-
-  .outlined.top {
-    transform: translateY(-1.5rem) scale(.75);
   }
 </style>
