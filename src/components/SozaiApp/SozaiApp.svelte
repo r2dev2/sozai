@@ -34,70 +34,77 @@
 
 <style>
   :root {
-    --font-size-x-small: 0.75rem;
-    --font-size-small: 0.875rem;
-    --line-height-small: 1.25rem;
-    --font-size-medium: 1rem;
-    --line-height-medium: 1.5rem;
-    --font-weight-medium: 500;
-    --font-size-large: 1.25rem;
-    --font-weight-bold: 700;
-    --border-radius-rounded: 0.25rem;
-    --border-width: 1px;
+    /**
+      Section: Typography
+      Description: Customize font-related properties
+     */
+    --font-size-x-small: 0.75rem; /* Extra small font size */
+    --font-size-small: 0.875rem; /* Small font size */
+    --line-height-small: 1.25rem; /* Line height for small font */
+    --font-size-medium: 1rem; /* Medium font size */
+    --line-height-medium: 1.5rem; /* Line height for medium font */
+    --font-weight-medium: 500; /* Weight for medium font */
+    --font-size-large: 1.25rem; /* Large font size */
+    --font-weight-bold: 700; /* Bold font weight */
 
-    /* Customizable colors */
-    /* Smelte uses #B027B0 as primary color but vuetify uses the blue which looks nicer */
-    /* Smelte's choices:
-    --primary-color: #B027B0;
-    --secondary-color: #009688;
-    --error-color: #F44336;
+    /**
+      Section: App Colors
+      Description: Color pallete of sozai app. When referring to these colors in the color prop, you may use 'primary' instead of 'var(--primary-color)' and so on for each of these colors. These defaults are from vuetify and for the ones vuetify doesn't provide, from smelte.
     */
-    --primary-color: #2196F3;
-    --secondary-color: #424242;
-    --error-color: #FF5252;
-    --success-color: #4CAF50;
-    --alert-color: #FF9800;
-    --dark-color: #212121;
+    --primary-color: #2196F3; /* Primary color */
+    --secondary-color: #424242; /* Secondary color */
+    --error-color: #FF5252; /* Error color */
+    --success-color: #4CAF50; /* Success color */
+    --alert-color: #FF9800; /* Alert color */
+    --dark-color: #212121; /* Dark color */
 
-    /* Material pallete colors */
-    --red: #F44336;
-    --pink: #E91E63;
-    --purple: #9C27B0;
-    --deep-purple: #673AB7;
-    --indigo: #3F51B5;
-    --blue: #2196F3;
-    --light-blue: #03A9F4;
-    --cyan: #00BCD4;
-    --teal: #009688;
-    --green: #4CAF50;
-    --light-green: #8BC34A;
-    --lime: #CDDC39;
-    --yellow: #FFEB3B;
-    --amber: #FFC107;
-    --orange: #FF9800;
-    --brown: #795548;
+    /**
+      Section: Material Pallete Colors
+      Description: Colors from the official material color pallete. When referring to these colors in the color prop, you may use 'red' instead of 'var(--red)' and so on for each of these colors.
+    */
+    --red: #F44336; /* Red */
+    --pink: #E91E63; /* Pink */
+    --purple: #9C27B0; /* Purple */
+    --deep-purple: #673AB7; /* Deep purple */
+    --indigo: #3F51B5; /* Indigo */
+    --blue: #2196F3; /* Blue */
+    --light-blue: #03A9F4; /* Light blue */
+    --cyan: #00BCD4; /* Cyan */
+    --teal: #009688; /* Teal */
+    --green: #4CAF50; /* Green */
+    --light-green: #8BC34A; /* Light green */
+    --lime: #CDDC39; /* Lime */
+    --yellow: #FFEB3B; /* Yellow */
+    --amber: #FFC107; /* Amber */
+    --orange: #FF9800; /* Orange */
+    --brown: #795548; /* Brown */
 
-    /* Internal colors */
-    --app-bg-color: white;
-    --disabled-bg-color: #E0E0E0; /* found from inspecting smeltejs docs */
-    --disabled-text-color: #9E9E9E; /* found from inspecting smeltejs docs */
-    --input-bg-color: #F3F4F6;
-    --input-bg-focus-color: #D1D5DB;
-    --input-label-text-color: #4B5563;
-    --input-text-color: black;
-    --light-dialog-bg-color: #FFFFFF;
-    --dark-dialog-bg-color: #424242;
-    --dialog-bg-color: var(--light-dialog-bg-color);
-    --hint-color: #757575;
-    --input-border-color: #9E9E9E;
+    /**
+      Section: Internal Colors
+      Description: Colors used in various components, change these for theming. Each component will mention which css vars it uses.
+    */
+    --app-bg-color: white; /* App background color */
+    --border-radius-rounded: 0.25rem; /* Rounded corner radius */
+    --border-width: 1px; /* Border width */
+    --disabled-bg-color: #E0E0E0; /* Background color for disabled buttons */
+    --disabled-text-color: #9E9E9E; /* Text color for disabled buttons */
+    --input-bg-color: #F3F4F6; /* Background color for filled textfields */
+    --input-bg-focus-color: #D1D5DB; /* Background color for focused filled textfields */
+    --input-label-text-color: #4B5563; /* Text color for textfield labels */
+    --input-text-color: black; /* Text color for textfields */
+    --input-border-color: #9E9E9E; /* Border color for textfields */
+    --hint-color: #757575; /* Text color for hints in textfields */
+    --light-dialog-bg-color: #FFFFFF; /* Background color for light-themed dialogs */
+    --dark-dialog-bg-color: #424242; /* Background color for dark-themed dialogs */
+    --dialog-bg-color: var(--light-dialog-bg-color); /* Background color for dialogs */
 
-    --brighten: brightness(110%);
-    --darken: brightness(90%);
-    --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    --brighten: brightness(110%); /* Filter for brightening elements */
+    --darken: brightness(90%); /* Filter for darkening elements */
+    --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); /* Box shadow for elements */
 
-    --transition-duration: 200ms;
-    --ripple-centered-duration: 400ms;
-    --ripple-normal-duration: 600ms;
+    --transition-duration: 200ms; /* Duration of transitions */
+    --ripple-centered-duration: 400ms; /* Duration of ripples that start at the center of elements */
+    --ripple-normal-duration: 600ms; /* Duration of normal ripples (this is probably the one you want to modify */
   }
 
   div {

@@ -1,4 +1,5 @@
 <script>
+  // TODO filled dense textfield
   import { tick } from 'svelte';
   import { fontLoaded } from '../../js/store.js';
   import { getColor } from '../../js/utils.js';
