@@ -115,6 +115,10 @@
     text-align: left;
   }
 
+  div:hover {
+    --input-border-color: var(--input-text-color);
+  }
+
   .s-input {
     border-radius: 0.25rem 0.25rem 0 0;
     padding: 0.5rem 0;
@@ -148,16 +152,18 @@
 
   .s-input.outlined {
     padding: 1rem 0.75rem;
-    border: var(--outlined-border-color) 1px solid;
+    border: var(--input-border-color) 1px solid;
     border-radius: var(--border-radius-rounded);
     background-color: #00000000;
   }
 
   .s-input.outlined:focus {
+    padding: calc(1rem - 1px) calc(0.75rem - 1px);
+    border-width: 2px;
     border-color: var(--color);
   }
 
-  .s-input.error,.s-input.error:focus {
+  .s-input.error,.s-input.error:focus,.s-input.error:hover {
     caret-color: var(--error-color);
     border-color: var(--error-color);
   }

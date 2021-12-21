@@ -26,7 +26,7 @@
 
     width: 100%;
     height: 0px;
-    border-bottom: 1px solid var(--input-text-color);
+    border-bottom: 1px solid var(--input-border-color);
   }
 
   .line {
