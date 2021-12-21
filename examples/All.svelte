@@ -5,12 +5,14 @@
   import Button from './Button.svelte';
   import TextField from './TextField.svelte';
   import Dialog from './Dialog.svelte';
+  import Theming from './Theming.svelte';
 
   const components = {
     button: Button,
+    dialog: Dialog,
     textfield: TextField,
-    dialog: Dialog
-  }
+    theming: Theming,
+  };
 
   let toShow = window.localStorage.getItem('com') ?? new URLSearchParams(location.search).get('com');
 
