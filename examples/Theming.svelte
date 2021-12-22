@@ -41,13 +41,17 @@
       <table>
         <tr>
           <th>Variable name</th>
-          <th>Variable value</th>
-          <th>Variable description</th>
+          <th>Default value</th>
+          <th>Description</th>
         </tr>
-        {#each attrs as { name, value, info }}
+        {#each attrs as { name, value, info, style }}
           <tr>
-            <td>{name}</td>
-            <td>{@html Prism.highlight(value, Prism.languages.css, 'css')}</td>
+            <td>
+              {name}
+            </td>
+            <td {style}>
+              {@html Prism.highlight(value, Prism.languages.css, 'css')}
+            </td>
             <td>{info}</td>
           </tr>
         {/each}

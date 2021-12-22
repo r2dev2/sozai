@@ -83,13 +83,13 @@
       Section: Internal Colors
       Description: Colors used in various components, change these for theming. Each component will mention which css vars it uses.
     */
-    --app-bg-color: white; /* App background color */
+    --app-bg-color: #FFFFFF; /* App background color */
     --disabled-bg-color: #E0E0E0; /* Background color for disabled buttons */
     --disabled-text-color: #9E9E9E; /* Text color for disabled buttons */
     --input-bg-color: #F3F4F6; /* Background color for filled textfields */
     --input-bg-focus-color: #D1D5DB; /* Background color for focused filled textfields */
     --input-label-text-color: #4B5563; /* Text color for textfield labels */
-    --input-text-color: black; /* Text color for textfields */
+    --input-text-color: #000000; /* Text color for textfields */
     --input-border-color: #9E9E9E; /* Border color for textfields */
     --hint-color: #757575; /* Text color for hints in textfields */
     --light-dialog-bg-color: #FFFFFF; /* Background color for light-themed dialogs */

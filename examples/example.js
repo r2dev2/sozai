@@ -48,11 +48,23 @@ const defaultSection = () => ({
 	attrs: [{
 		name: '',
 		value: '',
-		info: ''
+		info: '',
+		style: ''
 	}].slice(1)
 });
 
 const parseDocExp = /(.+): (.+); \/\* (.+) \*\//;
+const hexExp = /\#(..)(..)(..)/;
+
+// whether the hex color is grayscale and very white
+const isVeryLight = color => {
+	const [_, r, g, b] = hexExp
+		.exec(color)
+		.map(c => parseInt(c, 16));
+	const isGrayscale = Math.abs(r - g) + Math.abs(g - b) + Math.abs(r - b) < 50;
+	const mostIntense = Math.max(r, g, b);
+	return isGrayscale && mostIntense > 140;
+};
 
 export const getCssDocs = () => derived(getSource(sozaiSrc), $source => {
 	// we will parse html with string methods once more cause we are sigmas
@@ -84,7 +96,16 @@ export const getCssDocs = () => derived(getSource(sozaiSrc), $source => {
 		const parsed = parseDocExp.exec(line);
 		if (parsed) {
 			const [_all, name, value, info ] = parsed;
-			currentSection.attrs.push({ name, value, info });
+			const style = currentSection.section == 'Typography'
+				? name.includes('size')
+				? `font-size: ${value};`
+				: name.includes('height')
+				? `line-height: ${value};`
+				: `font-weight: ${value};`
+				: value.startsWith('#')
+				? `background-color: ${value}; color: ${isVeryLight(value) ? 'black' : 'white'};`
+				: '';
+			currentSection.attrs.push({ name, value, info, style });
 		}
 	}
 	if (currentSection.attrs.length) {
