@@ -9,6 +9,31 @@
 </script>
 
 <div class="theming-docs">
+  <section name="intro">
+    <h2>Introduction</h2>
+    <p>Theming Sozai apps is done through overriding the css variables in this document.</p>
+    <pre class="language-svelte">
+      <code>
+{`
+<!-- Root app -->
+<script>
+  import { SozaiApp } from 'sozai';
+</script>
+
+<SozaiApp>
+  <!-- Your app -->
+</SozaiApp>
+
+<style>
+  :root {
+    /* Override --primary-color, '!imporant' is necessary */
+    --primary-color: var(--red);
+  }
+</style>
+`.trim()}
+      </code>
+    </pre>
+  </section>
   {#each $docs as { section, description, attrs }}
     <section name={section}>
       <h2>{section}</h2>

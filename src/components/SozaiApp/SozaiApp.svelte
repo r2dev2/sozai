@@ -49,7 +49,7 @@
 
     /**
       Section: App Colors
-      Description: Color pallete of sozai app. When referring to these colors in the color prop, you may use 'primary' instead of 'var(--primary-color)' and so on for each of these colors. These defaults are from vuetify and for the ones vuetify doesn't provide, from smelte.
+      Description: Color pallete of sozai app. When referring to these colors in the color prop, you may use 'primary' instead of 'var(--primary-color)' and so on for each of these colors. These defaults are from vuetify. The ones not declared in vuetify are from smelte.
     */
     --primary-color: #2196F3; /* Primary color */
     --secondary-color: #424242; /* Secondary color */
