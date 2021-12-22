@@ -84,8 +84,6 @@
       Description: Colors used in various components, change these for theming. Each component will mention which css vars it uses.
     */
     --app-bg-color: white; /* App background color */
-    --border-radius-rounded: 0.25rem; /* Rounded corner radius */
-    --border-width: 1px; /* Border width */
     --disabled-bg-color: #E0E0E0; /* Background color for disabled buttons */
     --disabled-text-color: #9E9E9E; /* Text color for disabled buttons */
     --input-bg-color: #F3F4F6; /* Background color for filled textfields */
@@ -98,10 +96,27 @@
     --dark-dialog-bg-color: #424242; /* Background color for dark-themed dialogs */
     --dialog-bg-color: var(--light-dialog-bg-color); /* Background color for dialogs */
 
+
+    /**
+      Section: Component sizes
+      Description: Sizes used in various components. Each component will mention which css vars it uses.
+  */
+    --border-radius-rounded: 0.25rem; /* Rounded corner radius */
+    --border-width: 1px; /* Border width */
+
+    /**
+      Section: Effects
+      Description: Special effects used in various compoennts.
+    */
     --brighten: brightness(110%); /* Filter for brightening elements */
     --darken: brightness(90%); /* Filter for darkening elements */
     --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); /* Box shadow for elements */
 
+
+    /**
+      Section: Durations
+      Description: Durations used for various animations.
+    */
     --transition-duration: 200ms; /* Duration of transitions */
     --ripple-centered-duration: 400ms; /* Duration of ripples that start at the center of elements */
     --ripple-normal-duration: 600ms; /* Duration of normal ripples (this is probably the one you want to modify */
@@ -120,7 +135,7 @@
     font-weight: 400;
     font-size: 1.5rem;
     letter-spacing: 0;
-    margin: 0; /* do for rest of headers as well */
+    margin: 0;
   }
 
   div :global(.ripple) {
