@@ -27,7 +27,7 @@
 <style>
   :root {
     /* Override --primary-color, '!imporant' is necessary */
-    --primary-color: var(--red);
+    --primary-color: var(--red) !important;
   }
 </style>
 `.trim(), Prism.languages.svelte, 'svelte')}
