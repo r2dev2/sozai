@@ -14,7 +14,7 @@
     <p>Theming Sozai apps is done through overriding the css variables in this document.</p>
     <pre class="language-svelte">
       <code>
-{`
+{@html Prism.highlight(`
 <!-- Root app -->
 <script>
   import { SozaiApp } from 'sozai';
@@ -30,7 +30,7 @@
     --primary-color: var(--red);
   }
 </style>
-`.trim()}
+`.trim(), Prism.languages.svelte, 'svelte')}
       </code>
     </pre>
   </section>
@@ -68,5 +68,10 @@
 
   th {
     text-align: left;
+  }
+
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace !important;
+    font-size: 1em !important;
   }
 </style>
