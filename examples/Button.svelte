@@ -32,7 +32,7 @@
   </Example>
 
   <Example name="outlined-button" {filename}>
-    <Button color="secondary" light block outlined>
+    <Button color="green" light block outlined>
       Outlined Button
     </Button>
   </Example>

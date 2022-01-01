@@ -95,9 +95,7 @@
     --input-text-color: #000000; /* Text color for textfields */
     --input-border-color: #9E9E9E; /* Border color for textfields */
     --hint-color: #757575; /* Text color for hints in textfields */
-    --light-dialog-bg-color: #FFFFFF; /* Background color for light-themed dialogs */
-    --dark-dialog-bg-color: #424242; /* Background color for dark-themed dialogs */
-    --dialog-bg-color: var(--light-dialog-bg-color); /* Background color for dialogs */
+    --dialog-bg-color: #FFFFFF; /* Background color for dialogs */
 
 
     /**
@@ -127,7 +125,17 @@
 
   :root[data-theme=dark] {
     --app-bg-color: #212121;
+    --dialog-bg-color: #424242;
+    --input-text-color: #F5F5F5;
+    --input-bg-color: #1D1D1D;
+    --input-bg-focus-color: #1D1D1D;
+    --input-border-color: #EEEEEE;
+    --primary-color: #2196F3;
     --text-color: #F5F5F5;
+  }
+
+  :global(button:focus) {
+    outline: none;
   }
 
   :global(body) {
