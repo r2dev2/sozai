@@ -130,12 +130,74 @@
     font-family: roboto,medium !important;
   }
 
-  /* TODO: do the rest of the headers */
+  div :global(h1), div :global(h2), div :global(h3), div :global(h4), div :global(h5), div :global(h6) {
+    margin: 0;
+  }
+
+  div :global(h1) {
+    font-weight: lighter;
+    font-size: 6rem;
+    letter-spacing: -1.5px;
+  }
+
+  div :global(h2) {
+    font-weight: lighter;
+    font-size: 3.75rem;
+    letter-spacing: -0.5px;
+  }
+
+  div :global(h3) {
+    font-weight: normal;
+    font-size: 3rem;
+    letter-spacing: 0;
+  }
+
+  div :global(h4) {
+    font-weight: normal;
+    font-size: 2.125rem;
+    letter-spacing: 0.25px;
+  }
+
   div :global(h5) {
-    font-weight: 400;
+    font-weight: normal;
     font-size: 1.5rem;
     letter-spacing: 0;
-    margin: 0;
+  }
+
+  div :global(h6) {
+    font-weight: normal;
+    font-size: 1.25rem;
+    letter-spacing: 0.15px;
+  }
+
+  div :global(.subtitle-1) {
+    font-weight: normal;
+    font-size: 1rem;
+    letter-spacing: 0.15px;
+  }
+
+  div :global(.subtitle-2) {
+    font-weight: normal;
+    font-size: 0.875rem;
+    letter-spacing: 0.1px;
+  }
+
+  div :global(.body-1) {
+    font-weight: normal;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+  }
+
+  div :global(.body-2) {
+    font-weight: normal;
+    font-size: 0.875rem;
+    letter-spacing: 0.25px;
+  }
+
+  div :global(.caption) {
+    font-weight: normal;
+    font-size: 0.75rem;
+    letter-spacing: 0.4px;
   }
 
   div :global(.ripple) {
