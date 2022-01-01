@@ -2,7 +2,7 @@
 
 <script>
   import { onMount } from 'svelte';
-  import { fontLoaded } from '../../js/store.js';
+  import { fontLoaded, theme } from '../../js/store.js';
 
   export let noicon = false;
   export let nofont = false;
@@ -10,6 +10,8 @@
   $: if (nofont) {
     fontLoaded.set(true);
   }
+
+  $: document.documentElement.setAttribute('data-theme', $theme);
 </script>
 
 <svelte:head>
@@ -28,7 +30,7 @@
   {/if}
 </svelte:head>
 
-<div>
+<div class="sozai-app">
   <slot />
 </div>
 
@@ -84,6 +86,7 @@
       Description: Colors used in various components, change these for theming. Each component will mention which css vars it uses.
     */
     --app-bg-color: #FFFFFF; /* App background color */
+    --text-color: #000000; /* App text color */
     --disabled-bg-color: #E0E0E0; /* Background color for disabled buttons */
     --disabled-text-color: #9E9E9E; /* Text color for disabled buttons */
     --input-bg-color: #F3F4F6; /* Background color for filled textfields */
@@ -122,8 +125,21 @@
     --ripple-normal-duration: 600ms; /* Duration of normal ripples (this is probably the one you want to modify */
   }
 
-  div {
+  :root[data-theme=dark] {
+    --app-bg-color: #212121;
+    --text-color: #F5F5F5;
+  }
+
+  :global(body) {
+    margin: 0;
+    min-height: 100vh;
+  }
+
+  .sozai-app {
+    background-color: var(--app-bg-color);
+    color: var(--text-color);
     font-family: roboto,medium;
+    min-height: 100vh;
   }
 
   div :global(.s-component), div :global(.s-component textarea) {
@@ -182,7 +198,7 @@
     letter-spacing: 0.1px;
   }
 
-  div :global(.body-1) {
+  div :global(.body-1), :global(body) {
     font-weight: normal;
     font-size: 1rem;
     letter-spacing: 0.5px;

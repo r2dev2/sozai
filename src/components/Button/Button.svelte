@@ -27,9 +27,13 @@
 
   const forwardEvents = forwardEventsBuilder(get_current_component());
 
+  const toggleValue = () => {
+    value = !value;
+  };
+
   $: actualColor = getColor(color);
   $: ripple = createRipple((text || outlined) ? actualColor : '#FFFFFF');
-  $: style = `--button-color: ${actualColor}; ${style}`.trim();
+  $: style_ = `--button-color: ${actualColor}; ${style}`.trim();
 </script>
 
 <button
@@ -43,9 +47,10 @@
   class:flat
   class:text
   {disabled}
-  {style}
+  style={style_}
   use:forwardEvents
   use:ripple
+  on:click={toggleValue}
 >
   {#if icon}
     <div class="icon-content">

@@ -34,6 +34,35 @@
       </code>
     </pre>
   </section>
+
+  <section name="multiple-themes">
+    <h2>Multiple Themes</h2>
+    <p>Sozai apps may have multiple themes. The current theme is set through a theming store which is a string value of the theme name. Theme palletes are modified through [data-theme=] selectors. Sozai ships with a light theme and a dark theme.</p>
+    <pre class="language-svelte">
+      <code>
+{@html Prism.highlight(`
+<script>
+  import { onMount } from 'svelte';
+  import { theme } from 'sozai';
+
+  onMount(() =>{ 
+    theme.set('dark'); // can set to light, dark, or whatever your custom theme is named
+  });
+</script>
+<style>
+  :root[data-theme=dark] { /* data-theme="theme name" */
+    --app-bg-color: #212121 !important;
+  }
+
+  :root[data-theme=custom-theme] {
+    --app-bg-color: var(--red) !important;
+  }
+</style>
+`.trim(), Prism.languages.svelte, 'svelte')}
+      </code>
+    </pre>
+  </section>
+
   {#each $docs as { section, description, attrs }}
     <section name={section}>
       <h2>{section}</h2>
@@ -61,6 +90,10 @@
 </div>
 
 <style>
+  section {
+    padding-bottom: 2rem;
+  }
+
   table, td, th {
     border: 1px solid black;
     border-collapse: collapse;
