@@ -48,9 +48,9 @@
   class:text
   {disabled}
   style={style_}
+  on:click={toggleValue}
   use:forwardEvents
   use:ripple
-  on:click={toggleValue}
 >
   {#if icon}
     <div class="icon-content">
