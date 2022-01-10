@@ -124,7 +124,7 @@
   }
 
   .s-input {
-    background-color: var(--app-bg-color);
+    background-color: transparent;
     border-radius: 0.25rem 0.25rem 0 0;
     padding: 0.5rem 0;
     margin-bottom: 0px;
