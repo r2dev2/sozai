@@ -1,7 +1,7 @@
 <script>
   import { get_current_component } from 'svelte/internal';
 
-  import createRipple from '../../js/ripple.js';
+  import ripple from '../../js/ripple.js';
   import { forwardEventsBuilder } from '../../js/forwardEvents.js';
   import { getColor } from '../../js/utils.js';
 
@@ -32,7 +32,7 @@
   };
 
   $: actualColor = getColor(color);
-  $: ripple = createRipple((text || outlined) ? actualColor : '#FFFFFF');
+  // $: ripple = createRipple((text || outlined) ? actualColor : '#FFFFFF');
   $: style_ = `--button-color: ${actualColor}; ${style}`.trim();
 </script>
 

@@ -1,55 +1,148 @@
 /**
- * From smelte
+ * From svelte-materialify
  */
 
-// Thanks Lagden! https://svelte.dev/repl/61d9178d2b9944f2aa2bfe31612ab09f?version=3.6.7
-// smelte: modified to use css color instead of tailwind class color
-// sozai: modified to use js styles instead of tailwind classes
-function ripple(color, centered) {
-  return function(event) {
-    const target = event.currentTarget;
-    const circle = document.createElement("span");
-    const d = Math.max(target.clientWidth, target.clientHeight);
+/* eslint-disable no-param-reassign */
 
-    const removeCircle = () => {
-      circle.remove();
-      circle.removeEventListener("animationend", removeCircle);
-    };
+/**
+ * Options for customizing ripples
+ */
+const defaults = {
+  color: 'currentColor',
+  class: '',
+  opacity: 0.1,
+  centered: false,
+  spreadingDuration: 'var(--ripple-duration)',
+  spreadingDelay: '0s',
+  spreadingTimingFunction: 'linear',
+  clearingDuration: '1s',
+  clearingDelay: '0s',
+  clearingTimingFunction: 'ease-in-out',
+};
 
-    circle.addEventListener("animationend", removeCircle);
-    circle.style.width = circle.style.height = `${d}px`;
-    const rect = target.getBoundingClientRect();
+/**
+ * Creates a ripple element but does not destroy it (use RippleStop for that)
+ *
+ * @param {Event} e
+ * @param {*} options
+ * @returns Ripple element
+ */
+function RippleStart(e, options = {}) {
+  e.stopImmediatePropagation();
+  const opts = { ...defaults, ...options };
 
-    if (centered) {
-      circle.classList.add(
-        "ripple-centered",
-        // `bg-${color}-transDark` TODO do this when you figure out what transDark is
-      );
-      circle.style.position = 'absolute';
-      circle.style.top = '0px';
-      circle.style.left = '0px';
-    } else {
-      circle.style.left = `${event.clientX - rect.left - d / 2}px`;
-      circle.style.top = `${event.clientY - rect.top - d / 2}px`;
-      circle.style.backgroundColor = color;
-      circle.style.opacity = '0.2';
+  const isTouchEvent = e.touches ? !!e.touches[0] : false;
+  // Parent element
+  const target = isTouchEvent ? e.touches[0].currentTarget : e.currentTarget;
 
-      circle.classList.add("ripple-normal");
+  // Create ripple
+  const ripple = document.createElement('div');
+  const rippleStyle = ripple.style;
+
+  // Adding default stuff
+  ripple.className = `material-ripple ${opts.class}`;
+  rippleStyle.position = 'absolute';
+  rippleStyle.color = 'inherit';
+  rippleStyle.borderRadius = '50%';
+  rippleStyle.pointerEvents = 'none';
+  rippleStyle.width = '100px';
+  rippleStyle.height = '100px';
+  rippleStyle.marginTop = '-50px';
+  rippleStyle.marginLeft = '-50px';
+  target.appendChild(ripple);
+  rippleStyle.opacity = opts.opacity;
+  rippleStyle.transition = `transform ${opts.spreadingDuration} ${opts.spreadingTimingFunction} ${opts.spreadingDelay},opacity ${opts.clearingDuration} ${opts.clearingTimingFunction} ${opts.clearingDelay}`;
+  rippleStyle.transform = 'scale(0) translate(0,0)';
+  rippleStyle.background = opts.color;
+
+  // Positioning ripple
+  const targetRect = target.getBoundingClientRect();
+  if (opts.centered) {
+    rippleStyle.top = `${targetRect.height / 2}px`;
+    rippleStyle.left = `${targetRect.width / 2}px`;
+  } else {
+    const distY = isTouchEvent ? e.touches[0].clientY : e.clientY;
+    const distX = isTouchEvent ? e.touches[0].clientX : e.clientX;
+    rippleStyle.top = `${distY - targetRect.top}px`;
+    rippleStyle.left = `${distX - targetRect.left}px`;
+  }
+
+  // Enlarge ripple
+  rippleStyle.transform = `scale(${
+    Math.max(targetRect.width, targetRect.height) * 0.02
+  }) translate(0,0)`;
+  return ripple;
+}
+
+/**
+ * Destroys the ripple, slowly fading it out.
+ *
+ * @param {Element} ripple
+ */
+function RippleStop(ripple) {
+  if (ripple) {
+    ripple.addEventListener('transitionend', (e) => {
+      if (e.propertyName === 'opacity') ripple.remove();
+    });
+    ripple.style.opacity = 0;
+  }
+}
+
+/**
+ * @param node {Element}
+ */
+export default (node, _options = {}) => {
+  let options = _options;
+  let destroyed = false;
+  let ripple;
+  let keyboardActive = false;
+  const handleStart = (e) => {
+    ripple = RippleStart(e, options);
+  };
+  const handleStop = () => RippleStop(ripple);
+  const handleKeyboardStart = (e) => {
+    if (!keyboardActive && (e.keyCode === 13 || e.keyCode === 32)) {
+      ripple = RippleStart(e, { ...options, centered: true });
+      keyboardActive = true;
     }
-
-    circle.classList.add("ripple");
-
-    target.appendChild(circle);
   };
-}
-
-export default function r(color = "primary", centered = false) {
-  return function(node) {
-    const onMouseDown = ripple(color, centered);
-    node.addEventListener("mousedown", onMouseDown);
-
-    return {
-      onDestroy: () => node.removeEventListener("mousedown", onMouseDown),
-    };
+  const handleKeyboardStop = () => {
+    keyboardActive = false;
+    handleStop();
   };
-}
+
+  function setup() {
+    node.classList.add('s-ripple-container');
+    node.addEventListener('pointerdown', handleStart);
+    node.addEventListener('pointerup', handleStop);
+    node.addEventListener('touchstart', handleStart);
+    node.addEventListener('touchend', handleStop);
+    node.addEventListener('pointerleave', handleStop);
+    node.addEventListener('keydown', handleKeyboardStart);
+    node.addEventListener('keyup', handleKeyboardStop);
+    destroyed = false;
+  }
+
+  function destroy() {
+    node.classList.remove('s-ripple-container');
+    node.removeEventListener('pointerdown', handleStart);
+    node.removeEventListener('pointerup', handleStop);
+    node.removeEventListener('touchstart', handleStart);
+    node.removeEventListener('touchend', handleStop);
+    node.removeEventListener('pointerleave', handleStop);
+    node.removeEventListener('keydown', handleKeyboardStart);
+    node.removeEventListener('keyup', handleKeyboardStop);
+    destroyed = true;
+  }
+
+  if (options) setup();
+
+  return {
+    update(newOptions) {
+      options = newOptions;
+      if (options && destroyed) setup();
+      else if (!(options || destroyed)) destroy();
+    },
+    destroy,
+  };
+};

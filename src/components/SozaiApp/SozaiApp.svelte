@@ -121,8 +121,7 @@
       Description: Durations used for various animations.
     */
     --transition-duration: 200ms; /* Duration of transitions */
-    --ripple-centered-duration: 400ms; /* Duration of ripples that start at the center of elements */
-    --ripple-normal-duration: 600ms; /* Duration of normal ripples (this is probably the one you want to modify */
+    --ripple-duration: 300ms; /* Duration of ripples */
   }
 
   :root[data-theme=dark] {

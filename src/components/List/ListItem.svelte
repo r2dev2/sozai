@@ -1,5 +1,5 @@
 <script>
-  import createRipple from '../../js/ripple.js';
+  import ripple from '../../js/ripple.js';
   import { getColor } from '../../js/utils.js';
 
   import Icon from '../Icon/Icon.svelte';
@@ -9,7 +9,6 @@
   export let selected = false;
 
   $: actualColor = getColor(color);
-  $: ripple = createRipple(actualColor);
   $: style_ = `--color: ${actualColor};`;
 </script>
 
