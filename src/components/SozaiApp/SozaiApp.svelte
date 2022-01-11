@@ -96,6 +96,7 @@
     --input-border-color: #9E9E9E; /* Border color for textfields */
     --hint-color: #757575; /* Text color for hints in textfields */
     --dialog-bg-color: #FFFFFF; /* Background color for dialogs */
+    --listitem-subtitle-opacity: 0.6; /* Text opacity of listitem subtitles */
 
 
     /**
@@ -131,6 +132,7 @@
     --input-bg-color: #1D1D1D;
     --input-bg-focus-color: #1D1D1D;
     --input-border-color: #EEEEEE;
+    --listitem-subtitle-opacity: 0.7;
     --primary-color: #2196F3;
     --text-color: #F5F5F5;
   }
