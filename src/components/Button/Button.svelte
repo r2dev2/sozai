@@ -21,9 +21,9 @@
   export let dark = false;
   export let flat = false;
   export let klass = '';
-  export let iconKlass = '';
+  // export let iconKlass = '';
   export let style = '';
-  export let iconStyle = '';
+  // export let iconStyle = '';
 
   const forwardEvents = forwardEventsBuilder(get_current_component());
 
