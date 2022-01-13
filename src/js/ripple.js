@@ -15,7 +15,7 @@ const defaults = {
   spreadingDuration: 'var(--ripple-duration)',
   spreadingDelay: '0s',
   spreadingTimingFunction: 'linear',
-  clearingDuration: '1s',
+  clearingDuration: 'calc(var(--ripple-duration) + 600ms)',
   clearingDelay: '0s',
   clearingTimingFunction: 'ease-in-out',
 };

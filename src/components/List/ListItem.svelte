@@ -36,6 +36,7 @@
     align-items: center;
     padding: 0.75rem 1.5rem;
     text-decoration: none;
+    overflow: hidden;
     transition: var(--transition-duration) ease-in;
   }
 

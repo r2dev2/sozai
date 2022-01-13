@@ -37,6 +37,7 @@
     white-space: nowrap;
     word-wrap: normal;
     direction: ltr;
+    font-feature-settings: 'liga';
     -moz-font-feature-settings: 'liga';
   }
 
