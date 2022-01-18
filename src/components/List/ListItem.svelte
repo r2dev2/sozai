@@ -1,7 +1,6 @@
-<svelte:options immutable />
-
 <script>
   import { get_current_component } from 'svelte/internal';
+  import { onMount } from 'svelte';
   import { forwardEventsBuilder } from '../../js/forwardEvents.js';
   import ripple from '../../js/ripple.js';
   import { getColor } from '../../js/utils.js';
@@ -12,13 +11,27 @@
   export let icon = '';
   export let selected = false;
 
+  let li;
+
   const forwardEvents = forwardEventsBuilder(get_current_component());
 
+  onMount(() => {
+    li.setSelected = s => selected = s;
+    li.getSelected = () => selected;
+  });
+  
   $: actualColor = getColor(color);
   $: style_ = `--color: ${actualColor};`;
 </script>
 
-<li class="s-component s-listitem" class:selected style={style_} use:ripple use:forwardEvents>
+<li
+  bind:this={li}
+  class="s-component s-listitem"
+  class:selected
+  style={style_}
+  use:ripple
+  use:forwardEvents
+>
   <slot name="prepend">
     {#if icon}
       <Icon color={selected ? actualColor : 'var(--secondary-color)'}>{icon}</Icon>

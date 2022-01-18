@@ -7,7 +7,7 @@
   export let klass = '';
   export let style = '';
 
-  $: style = `${color ? `--color: ${color};` : ''} ${style}`.trim();
+  $: style_ = `${color ? `--color: ${color};` : ''} ${style}`.trim();
 </script>
 
 <i
@@ -18,7 +18,7 @@
   class:small
   class:xs
   on:click
-  {style}
+  style={style_}
 >
 <slot />
 </i>

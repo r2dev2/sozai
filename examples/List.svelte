@@ -20,14 +20,15 @@
   </Example>
 
   <Example name="icon-list" {filename}>
-    <List>
+    <!-- May also bind:selected -->
+    <List on:change={e => console.log(e.detail.selected)}>
       <ListItem icon="schedule">
         <div slot="title">Real-Time</div>
       </ListItem>
       <ListItem icon="person">
         <div slot="title">Audience</div>
       </ListItem>
-      <ListItem icon="flag" selected>
+      <ListItem icon="flag">
         <div slot="title">Conversions</div>
       </ListItem>
     </List>
