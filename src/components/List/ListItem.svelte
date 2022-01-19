@@ -56,27 +56,36 @@
     padding: 0.75rem 1.5rem;
     text-decoration: none;
     overflow: hidden;
-    transition: var(--transition-duration) ease-in;
+    transition: var(--ripple-duration) ease-in;
+    /* transition-delay: var(--ripple-duration); */
   }
 
-  .content {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .selected::before {
+  .s-listitem::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--color);
+    opacity: 0;
+    background-color: var(--secondary-color);
+  }
+
+  .s-listitem:hover::before, .selected::before {
     opacity: 0.12;
+  }
+
+  .selected::before {
+    background-color: var(--color);
   }
 
   .selected {
     color: var(--color);
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
   }
 
   .s-listitem :global([slot=title]) {
@@ -86,5 +95,9 @@
   .s-listitem :global([slot=subtitle]) {
     font-size: var(--font-size-small);
     opacity: var(--listitem-subtitle-opacity);
+  }
+
+  .s-listitem :global(i) {
+    transition: var(--ripple-duration) ease-in;
   }
 </style>
