@@ -20,11 +20,13 @@ const defaults = {
   clearingTimingFunction: 'ease-in-out',
 };
 
+/** @typedef {typeof defaults} RippleOptions */
+
 /**
  * Creates a ripple element but does not destroy it (use RippleStop for that)
  *
  * @param {Event} e
- * @param {*} options
+ * @param {Partial<RippleOptions>} options
  * @returns Ripple element
  */
 function RippleStart(e, options = {}) {
@@ -90,6 +92,7 @@ function RippleStop(ripple) {
 
 /**
  * @param node {Element}
+ * @param _options {Partial<RippleOptions>}
  */
 export default (node, _options = {}) => {
   let options = _options;
