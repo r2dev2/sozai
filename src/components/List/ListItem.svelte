@@ -11,6 +11,7 @@
   export let icon = '';
   export let selected = false;
 
+  /** @type {HTMLElement | undefined}*/
   let li;
 
   const forwardEvents = forwardEventsBuilder(get_current_component());

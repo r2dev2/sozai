@@ -90,10 +90,7 @@ function RippleStop(ripple) {
   }
 }
 
-/**
- * @param node {Element}
- * @param _options {Partial<RippleOptions>}
- */
+/** @type {(node: HTMLElement, _options: Partial<RippleOptions>) => { update: (newOptions: Partial<RippleOptions>) => void, destroy: () => void }} */
 export default (node, _options = {}) => {
   let options = _options;
   let destroyed = false;
