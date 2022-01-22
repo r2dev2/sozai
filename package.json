@@ -1,6 +1,6 @@
 {
   "name": "sozai",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "license": "MIT",
   "description": "UI framework with material components build with Svelte and without Tailwind CSS",
   "svelte": "src/index.js",
