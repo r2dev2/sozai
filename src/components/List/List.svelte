@@ -50,11 +50,15 @@
     child.__sozaiListOnClick = e => {
       if (!selectable) return;
       e.stopImmediatePropagation();
-      if (child.getSelected() && selectedSet.has(i)) {
+      if (child.getSelected() && selectedSet.has(i) && multiselect) {
         updateSelected(selected.filter(s => s != i));
       }
       if (!child.getSelected() && !selectedSet.has(i)) {
         updateSelected([...selected, i].sort());
+      }
+      if (!multiselect && selected.includes(i)) {
+        selected.filter(s => s !== i).forEach(s => children[s].setSelected(false));
+        updateSelected([i]);
       }
       child.setSelected(!child.getSelected());
       dispatch('change', { selected });
