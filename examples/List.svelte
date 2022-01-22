@@ -21,7 +21,7 @@
 
   <Example name="icon-list" {filename}>
     <!-- May also bind:selected -->
-    <List on:change={e => console.log(e.detail.selected)}>
+    <List selectable on:change={e => console.log(e.detail.selected)}>
       <ListItem icon="schedule">
         <div slot="title">Real-Time</div>
       </ListItem>

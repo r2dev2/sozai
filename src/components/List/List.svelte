@@ -1,5 +1,7 @@
 <script>
   import { createEventDispatcher, onMount, setContext } from 'svelte';
+  import { writable } from 'svelte/store';
+  import { listKey } from '../../js/constants.js';
 
   export let selectable = false;
   export let multiselect = false;
@@ -9,6 +11,16 @@
   /** @typedef {(e: MouseEvent) => void} MouseEventCB*/
   /** @type {Array<HTMLElement & { __sozaiListOnClick: MouseEventCB, setSelected: (s: boolean) => void, getSelected: () => boolean}} */
   let children = [];
+
+  const isSelectable = writable(selectable);
+  const isMultiselect = writable(multiselect);
+
+  $: isSelectable.set(selectable);
+  $: isMultiselect.set(multiselect);
+
+  setContext(listKey, {
+    selectable: isSelectable, multiselect: isMultiselect
+  });
 
   const dispatch = createEventDispatcher();
 
@@ -25,9 +37,6 @@
     const observer = new MutationObserver(updateChildren);
     observer.observe(ul, config);
     updateChildren();
-    setContext('list', {
-      selectable, multiselect
-    })
     return () => observer.disconnect();
   });
 
@@ -39,6 +48,7 @@
     child.setSelected(selectedSet.has(i));
     /** @type {(e: MouseEvent) => void}*/
     child.__sozaiListOnClick = e => {
+      if (!selectable) return;
       e.stopImmediatePropagation();
       if (child.getSelected() && selectedSet.has(i)) {
         updateSelected(selected.filter(s => s != i));

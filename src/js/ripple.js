@@ -8,6 +8,7 @@
  * Options for customizing ripples
  */
 const defaults = {
+  disabled: false,
   color: 'currentColor',
   class: '',
   opacity: 0.1,
@@ -51,7 +52,7 @@ function RippleStart(e, options = {}) {
   rippleStyle.height = '100px';
   rippleStyle.marginTop = '-50px';
   rippleStyle.marginLeft = '-50px';
-  target.appendChild(ripple);
+  if (!opts.disabled) target.appendChild(ripple);
   rippleStyle.opacity = opts.opacity;
   rippleStyle.transition = `transform ${opts.spreadingDuration} ${opts.spreadingTimingFunction} ${opts.spreadingDelay},opacity ${opts.clearingDuration} ${opts.clearingTimingFunction} ${opts.clearingDelay}`;
   rippleStyle.transform = 'scale(0) translate(0,0)';

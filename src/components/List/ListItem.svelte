@@ -1,6 +1,8 @@
 <script>
-  import { get_current_component } from 'svelte/internal';
+  import { getContext, get_current_component } from 'svelte/internal';
   import { onMount } from 'svelte';
+  import { writable } from 'svelte/store';
+  import { listKey } from '../../js/constants.js';
   import { forwardEventsBuilder } from '../../js/forwardEvents.js';
   import ripple from '../../js/ripple.js';
   import { getColor } from '../../js/utils.js';
@@ -13,6 +15,16 @@
 
   /** @type {HTMLElement | undefined}*/
   let li;
+
+  const defaultStores = {
+    selectable: writable(false),
+    multiselect: writable(false),
+  };
+
+  const { selectable, multiselect } = {
+    ...defaultStores,
+    .../** @type {typeof defaultStores} */ (getContext(listKey))
+  };
 
   const forwardEvents = forwardEventsBuilder(get_current_component());
 
@@ -30,7 +42,7 @@
   class="s-component s-listitem"
   class:selected
   style={style_}
-  use:ripple
+  use:ripple={{ disabled: !$selectable }}
   use:forwardEvents
 >
   <slot name="prepend">
