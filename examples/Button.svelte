@@ -63,5 +63,4 @@
     <!-- Clear background button -->
     <Button color="error" icon="change_history" text light flat dense />
   </Example>
-
 </Examples>

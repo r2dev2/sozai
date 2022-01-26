@@ -18,7 +18,7 @@
   export let dense = false;
   export let hint = '';
   export let error = '';
-  export let append = '';
+  // export let append = '';
   export let prepend = '';
   export let persistentHint = false;
   export let textarea = false;
@@ -26,8 +26,8 @@
   export let select = false;
   export let autocomplete = false;
   export let noUnderline = false;
-  export let appendReverse = false;
-  export let prependReverse = false;
+  // export let appendReverse = false;
+  // export let prependReverse = false;
   export let bgColor = 'var(--app-bg-color)';
   export let disabled = false;
   export let focused = false;

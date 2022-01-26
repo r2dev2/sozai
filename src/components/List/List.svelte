@@ -7,6 +7,7 @@
   export let multiselect = false;
   export let selected = [0].slice(1);
 
+  /** @type {HTMLElement | undefined}*/
   let ul;
   /** @typedef {(e: MouseEvent) => void} MouseEventCB*/
   /** @type {Array<HTMLElement & { __sozaiListOnClick: MouseEventCB, setSelected: (s: boolean) => void, getSelected: () => boolean}} */
@@ -25,7 +26,7 @@
   const dispatch = createEventDispatcher();
 
   const updateChildren = () => {
-    children = [...ul.querySelectorAll(':scope > .s-listitem')];
+    children = [...ul?.querySelectorAll(':scope > .s-listitem')];
     selected = children
       .map((el, i) => [el, i])
       .filter(([el]) => el?.getSelected())
