@@ -73,6 +73,10 @@
     /* transition-delay: var(--ripple-duration); */
   }
 
+  .s-listitem:hover {
+    cursor: pointer;
+  }
+
   .s-listitem::before {
     content: '';
     position: absolute;

@@ -4,7 +4,7 @@
   import { theme, Button, SozaiApp } from '../src';
   import ButtonDemo from './Button.svelte';
   import Dialog from './Dialog.svelte';
-  // import Select from './Select.svelte';
+  import Select from './Select.svelte';
   import List from './List.svelte';
   import TextField from './TextField.svelte';
   import Theming from './Theming.svelte';
@@ -14,7 +14,7 @@
     button: ButtonDemo,
     dialog: Dialog,
     list: List,
-    /* select: Select, */
+    select: Select,
     textfield: TextField,
     theming: Theming,
     typography: Typography,

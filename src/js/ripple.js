@@ -36,6 +36,7 @@ function RippleStart(e, options = {}) {
 
   const isTouchEvent = e.touches ? !!e.touches[0] : false;
   // Parent element
+  /** @type {HTMLElement} */
   const target = isTouchEvent ? e.touches[0].currentTarget : e.currentTarget;
 
   // Create ripple
@@ -59,21 +60,24 @@ function RippleStart(e, options = {}) {
   rippleStyle.background = opts.color;
 
   // Positioning ripple
-  const targetRect = target.getBoundingClientRect();
-  if (opts.centered) {
-    rippleStyle.top = `${targetRect.height / 2}px`;
-    rippleStyle.left = `${targetRect.width / 2}px`;
-  } else {
-    const distY = isTouchEvent ? e.touches[0].clientY : e.clientY;
-    const distX = isTouchEvent ? e.touches[0].clientX : e.clientX;
-    rippleStyle.top = `${distY - targetRect.top}px`;
-    rippleStyle.left = `${distX - targetRect.left}px`;
-  }
+  // idk why but this needs to be setTimeouted or it doesn't work for selects
+  setTimeout(() => {
+    const targetRect = target.getBoundingClientRect();
+    if (opts.centered) {
+      rippleStyle.top = `${targetRect.height / 2}px`;
+      rippleStyle.left = `${targetRect.width / 2}px`;
+    } else {
+      const distY = isTouchEvent ? e.touches[0].clientY : e.clientY;
+      const distX = isTouchEvent ? e.touches[0].clientX : e.clientX;
+      rippleStyle.top = `${distY - targetRect.top}px`;
+      rippleStyle.left = `${distX - targetRect.left}px`;
+    }
 
-  // Enlarge ripple
-  rippleStyle.transform = `scale(${
-    Math.max(targetRect.width, targetRect.height) * 0.02
-  }) translate(0,0)`;
+    // Enlarge ripple
+    rippleStyle.transform = `scale(${
+      Math.max(targetRect.width, targetRect.height) * 0.02
+    }) translate(0,0)`;
+    });
   return ripple;
 }
 
