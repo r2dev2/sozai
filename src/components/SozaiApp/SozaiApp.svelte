@@ -4,7 +4,7 @@
   import { onMount } from 'svelte';
   import { fontLoaded, theme } from '../../js/store.js';
 
-  export let noicon = false;
+  // export let noicon = false;
   export let nofont = false;
 
   $: if (nofont) {
@@ -15,12 +15,12 @@
 </script>
 
 <svelte:head>
-  {#if !noicon}
+  <!-- {#if !noicon}
     <link
       href="https://fonts.googleapis.com/css?family=Roboto:300,400,500|Material+Icons&display=swap"
       rel="stylesheet"
     />
-  {/if}
+  {/if} -->
   {#if !nofont}
     <link
       on:load={() => fontLoaded.set(true)}
@@ -123,6 +123,7 @@
     */
     --transition-duration: 200ms; /* Duration of transitions */
     --ripple-duration: 300ms; /* Duration of ripples */
+    --select-activate-duration: 100ms; /* Duration of activate select fade */
   }
 
   :root[data-theme=dark] {
@@ -227,31 +228,20 @@
     letter-spacing: 0.4px;
   }
 
-  div :global(.ripple) {
-    border-radius: 50%;
-    position: absolute;
-    transform: scale(0);
+  div :global(.fade-in) {
+    opacity: 1;
+    animation-name: fadeInOpacity;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: var(--fade-duration);
   }
 
-  div :global(.ripple-normal) {
-    animation: ripple-normal-animation var(--ripple-normal-duration);
-  }
-
-  div :global(.ripple-centered) {
-    animation: ripple-centered-animation var(--ripple-centered-duration);
-  }
-
-  @keyframes ripple-normal-animation {
-    to {
+  @keyframes fadeInOpacity {
+    0% {
       opacity: 0;
-      transform: scale(2.5);
     }
-  }
-
-  @keyframes ripple-centered-animation {
-    to {
-      opacity: 0;
-      transform: scale(1);
+    100% {
+      opacity: 1;
     }
   }
 </style>

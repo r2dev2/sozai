@@ -1,5 +1,7 @@
+<svelte:options immutable />
+
 <script>
-  export let small =false;
+  export let small = false;
   export let xs = false;
   export let reverse = false;
   export let tip = false;

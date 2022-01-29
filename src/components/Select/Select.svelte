@@ -8,6 +8,7 @@
   import TextField from '../TextField/TextField.svelte';
   import List from '../List/List.svelte';
   import ListItem from '../List/ListItem.svelte';
+  import Icon from '../Icon/Icon.svelte';
 
   export let label = '';
   export let active = false;
@@ -70,8 +71,12 @@
     {dense}
   />
 
+  <div class="dropdown-icon">
+    <Icon>arrow_drop_down</Icon>
+  </div>
+
   {#if active}
-    <div class="options">
+    <div class="options fade-in">
       <List
         selectable
         selected={[value].filter(x => x != null)}
@@ -89,7 +94,25 @@
 
 <style>
   .s-select {
+    --fade-duration: var(--select-activate-duration);
     position: relative;
+  }
+
+  .dropdown-icon {
+    position: absolute;
+    top: 50%;
+    right: 1.75rem;
+    transform: perspective(1px) translateY(-50%);
+  }
+
+  .dropdown-icon :global(i) {
+    vertical-align: middle;
+    transition: var(--select-activate-duration) ease-out;
+  }
+
+  .s-select:focus-within > .dropdown-icon :global(i) {
+    color: var(--primary-color);
+    transform: rotate(180deg);
   }
 
   .s-select :global(.s-list) {
