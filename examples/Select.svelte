@@ -18,7 +18,15 @@
     <Select label="Standard" {items} />
   </Example>
 
+  <Example name="dense-select" {filename}>
+    <Select label="Dense" dense {items} />
+  </Example>
+
   <Example name="outlined-select" {filename}>
     <Select label="Outlined" outlined {items} />
+  </Example>
+
+  <Example name="dense-outlined-select" {filename}>
+    <Select label="Outlined Dense" outlined dense {items} />
   </Example>
 </Examples>

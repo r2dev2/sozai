@@ -58,6 +58,7 @@
 <div
   class="s-component s-select"
   class:active
+  class:outlined
   on:transitionstart={onTransitionStart}
   on:transitionend={onTransitionEnd}
 >
@@ -101,8 +102,12 @@
   .dropdown-icon {
     position: absolute;
     top: 50%;
-    right: 1.75rem;
+    right: 0.25rem;
     transform: perspective(1px) translateY(-50%);
+  }
+
+  .s-select.outlined .dropdown-icon {
+    right: 1.5rem;
   }
 
   .dropdown-icon :global(i) {
