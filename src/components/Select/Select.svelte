@@ -3,8 +3,7 @@
 </script>
 
 <script>
-  import { createEventDispatcher, onMount } from 'svelte';
-  import { fade } from 'svelte/transition';
+  import { createEventDispatcher } from 'svelte';
 
   import TextField from '../TextField/TextField.svelte';
   import List from '../List/List.svelte';
@@ -16,32 +15,49 @@
   export let value = null;
   export let items = [{ text: 'sample' }].slice(1);
 
-  /** @type {HTMLElement | null}*/
-  let selectEl;
-  let fadeOutDuration = 300;
+  const dispatch = createEventDispatcher();
+
+  /** @type {Set<HTMLElement} */
+  const activeTransformTransitionRipples = new Set();
+
+  const deactivate = () => {
+    if (activeTransformTransitionRipples.size) {
+      const [ ripple ] = activeTransformTransitionRipples.values();
+      ripple.addEventListener('transitionend', () => (active = false));
+    } else {
+      active = false;
+    }
+  };
 
   /** @type {(num: number) => void}*/
   const selectValue = num => {
     value = num;
-    active = false;
     dispatch('change', { value });
+    deactivate();
   };
 
-  const dispatch = createEventDispatcher();
-
-  onMount(() => {
-    const cssRippleDuration = window.getComputedStyle(selectEl).getPropertyValue('--ripple-duration');
-    const numDuration = parseFloat(cssRippleDuration);
-    if (!isNaN(numDuration)) return;
-    if (cssRippleDuration.endsWith('ms')) {
-      fadeOutDuration = numDuration;
-    } else if (cssRippleDuration.endsWith('s')) {
-      fadeOutDuration = numDuration * 1000;
+  /** @type {(e: TransitionEvent) => void} */
+  const onTransitionStart = e => {
+    const target = /** @type {HTMLElement}*/ (e.target);
+    if (e.propertyName == 'transform' && target.classList.contains('material-ripple')) {
+      activeTransformTransitionRipples.add(target);
     }
-  });
+  };
+
+  /** @type {(e: TransitionEvent) => void} */
+  const onTransitionEnd = e => {
+    if (e.propertyName == 'transform') {
+      activeTransformTransitionRipples.delete(e.target);
+    }
+  };
 </script>
 
-<div bind:this={selectEl} class="s-component s-select" class:active>
+<div
+  class="s-component s-select"
+  class:active
+  on:transitionstart={onTransitionStart}
+  on:transitionend={onTransitionEnd}
+>
   <TextField
     value={items[value]?.text ?? ''}
     disabled={active}
@@ -51,7 +67,7 @@
   />
 
   {#if active}
-    <div class="options" out:fade={{ delay: fadeOutDuration, duration: 0 }}>
+    <div class="options">
       <List
         selectable
         selected={[value].filter(x => x != null)}
