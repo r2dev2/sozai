@@ -15,6 +15,7 @@
   export let value = null;
   export let items = [{ text: 'sample' }].slice(1);
   export let outlined = false;
+  export let dense = false;
 
   const dispatch = createEventDispatcher();
 
@@ -66,6 +67,7 @@
     on:click={() => (active = !active)}
     {label}
     {outlined}
+    {dense}
   />
 
   {#if active}

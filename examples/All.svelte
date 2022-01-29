@@ -1,10 +1,10 @@
 <script>
   import 'prismjs';
 
-  import { theme, Button, SozaiApp } from '../src';
+  import { theme, Button, Select, SozaiApp } from '../src';
   import ButtonDemo from './Button.svelte';
   import Dialog from './Dialog.svelte';
-  import Select from './Select.svelte';
+  import SelectDemo from './Select.svelte';
   import List from './List.svelte';
   import TextField from './TextField.svelte';
   import Theming from './Theming.svelte';
@@ -14,11 +14,13 @@
     button: ButtonDemo,
     dialog: Dialog,
     list: List,
-    select: Select,
+    select: SelectDemo,
     textfield: TextField,
     theming: Theming,
     typography: Typography,
   };
+
+  const componentNames = Object.keys(components).map(text => ({ text }));
 
   let toShow = window.localStorage.getItem('com') ?? new URLSearchParams(location.search).get('com');
   const defaultTheme = window.localStorage.getItem('theme');
@@ -27,11 +29,11 @@
     theme.set(defaultTheme);
   }
 
-  $: if (!components[toShow]) {
-    toShow = 'button';
+  $: if (!Object.values(components)[toShow]) {
+    toShow = 0;
   }
 
-  $: component = components[toShow];
+  $: component = Object.values(components)[toShow];
   $: window.localStorage.setItem('com', toShow);
   $: window.localStorage.setItem('theme', $theme);
 </script>
@@ -43,12 +45,15 @@
         <h1>Sozai</h1>
       </div>
       <div class="demo-chooser">
+        <Select bind:value={toShow} label="Component" dense outlined items={componentNames} />
+        <!--
         <label for="to-demo">Component to demo</label>
         <select bind:value={toShow} name="to-demo">
           {#each Object.keys(components) as value}
             <option {value}>{value}</option>
           {/each}
         </select>
+        -->
       </div>
       <div class="light-dark-toggle">
         <Button
@@ -81,7 +86,10 @@
 
   .demo-chooser {
     float: left;
-    margin-top: 1rem;
+  }
+
+  .demo-chooser :global(.s-input-container) {
+    margin-bottom: 0.5rem;
   }
 
   .light-dark-toggle {
