@@ -17,4 +17,8 @@
   <Example name="standard-select" {filename}>
     <Select label="Standard" {items} />
   </Example>
+
+  <Example name="outlined-select" {filename}>
+    <Select label="Outlined" outlined {items} />
+  </Example>
 </Examples>

@@ -113,6 +113,7 @@
     --brighten: brightness(110%); /* Filter for brightening elements */
     --darken: brightness(90%); /* Filter for darkening elements */
     --shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12); /* Box shadow for elements */
+    --select-shadow: 0 5px 5px -3px rgba(0,0,0,.2),0 8px 10px 1px rgba(0,0,0,.14),0 3px 14px 2px rgba(0,0,0,.12); /* Box shadow for select lists from vuetify */
     --nav-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12); /* Box shadow for navigation headers */
 
 

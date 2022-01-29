@@ -14,6 +14,7 @@
   /** @type {number | null} */
   export let value = null;
   export let items = [{ text: 'sample' }].slice(1);
+  export let outlined = false;
 
   const dispatch = createEventDispatcher();
 
@@ -64,6 +65,7 @@
     focused={active}
     on:click={() => (active = !active)}
     {label}
+    {outlined}
   />
 
   {#if active}
@@ -90,13 +92,14 @@
 
   .s-select :global(.s-list) {
     position: absolute;
+    z-index: 9;
     top: 0;
     left: 0;
     width: 100%;
     padding: 0;
     margin: 0;
     background-color: var(--app-bg-color);
-    box-shadow: var(--shadow);
+    box-shadow: var(--select-shadow);
   }
 
   .s-select :global(.s-listitem) {
