@@ -45,7 +45,7 @@
         <h1>Sozai</h1>
       </div>
       <div class="demo-chooser">
-        <Select bind:value={toShow} label="Component" dense outlined items={componentNames} />
+        <Select bind:value={toShow} label="Component" dense items={componentNames} />
         <!--
         <label for="to-demo">Component to demo</label>
         <select bind:value={toShow} name="to-demo">
@@ -86,6 +86,7 @@
 
   .demo-chooser {
     float: left;
+    margin-top: 1rem;
   }
 
   .demo-chooser :global(.s-input-container) {
