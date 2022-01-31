@@ -6,7 +6,7 @@
   "svelte": "src/index.js",
   "scripts": {
     "build": "rollup -c",
-    "build:examples": "cd examples && rollup -c && ./replacefilepath.sh",
+    "build:examples": "cd examples && rollup -c && ./replacefilepath.sh && cp index.html build/index.html",
     "dev": "cd examples && rollup -c -w",
     "start": "sirv examples --no-clear"
   },
