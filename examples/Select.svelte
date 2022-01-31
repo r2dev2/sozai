@@ -11,8 +11,6 @@
     { value: 3, text: 'three' },
     { value: 4, text: 'four' }
   ];
-
-  console.log('SELECT EXAMPLES');
 </script>
 
 <Examples name="Select">

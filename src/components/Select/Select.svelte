@@ -25,8 +25,9 @@
 
   const deactivate = () => {
     if (activeTransformTransitionRipples.size) {
-      const [ ripple ] = activeTransformTransitionRipples.values();
-      ripple.addEventListener('transitionend', () => (active = false));
+      for (const ripple of activeTransformTransitionRipples) {
+        ripple.addEventListener('transitionend', () => (active = false));
+      }
     } else {
       active = false;
     }
