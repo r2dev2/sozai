@@ -7,10 +7,10 @@
   export let multiselect = false;
   export let selected = [0].slice(1);
 
-  /** @type {HTMLElement | undefined}*/
+  /** @type {Element | undefined}*/
   let ul;
   /** @typedef {(e: MouseEvent) => void} MouseEventCB*/
-  /** @type {Array<HTMLElement & { __sozaiListOnClick: MouseEventCB, setSelected: (s: boolean) => void, getSelected: () => boolean}} */
+  /** @type {Array<Element & Partial<{ __sozaiListOnClick: MouseEventCB, setSelected: (s: boolean) => void, getSelected: () => boolean}>>} */
   let children = [];
 
   const isSelectable = writable(selectable);
@@ -28,7 +28,7 @@
   const updateChildren = () => {
     children = [...ul?.querySelectorAll(':scope > .s-listitem')];
     selected = children
-      .map((el, i) => [el, i])
+      .map((el, i) => /** @type {[typeof children[0], number]} */ ([el, i]))
       .filter(([el]) => el?.getSelected())
       .map(([_el, i]) => i);
   };

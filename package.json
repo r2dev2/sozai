@@ -15,6 +15,7 @@
     "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-node-resolve": "^9.0.0",
     "@tsconfig/svelte": "^3.0.0",
+    "@types/prismjs": "^1.26.0",
     "prism-svelte": "^0.4.7",
     "prismjs": "^1.25.0",
     "rollup": "^2.0.0",

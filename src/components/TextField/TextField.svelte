@@ -41,7 +41,7 @@
   const forwardEvents = forwardEventsBuilder(get_current_component());
 
   $: showHint = error || (persistentHint ? hint : focused && hint);
-  $: labelOnTop = placeholder || focused || (value || value === 0);
+  $: labelOnTop = Boolean(placeholder || focused || value);
   $: actualColor = getColor(color);
   $: style = `--color: ${actualColor}`;
 </script>
@@ -53,10 +53,10 @@
         {labelOnTop}
         {dense}
         {focused}
-        {error}
+        error={Boolean(error)}
         {outlined}
         {filled}
-        {prepend}
+        prepend={Boolean(prepend)}
         {color}
         {bgColor}
       >
@@ -102,7 +102,7 @@
     {noUnderline}
     {outlined}
     {focused}
-    {error}
+    error={Boolean(error)}
     {color}
   />
 

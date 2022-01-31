@@ -5,7 +5,7 @@
 
 import {bubble, listen} from 'svelte/internal';
 
-
+/** @type {(component: any, additionalEvents: string[]) => (node: HTMLElement) => { destroy: VoidFunction}} */
 export function forwardEventsBuilder(component, additionalEvents = []) {
   const events = [
     'focus', 'blur',

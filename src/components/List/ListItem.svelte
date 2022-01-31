@@ -29,7 +29,9 @@
   const forwardEvents = forwardEventsBuilder(get_current_component());
 
   onMount(() => {
+    // @ts-ignore
     li.setSelected = s => selected = s;
+    // @ts-ignore
     li.getSelected = () => selected;
   });
   

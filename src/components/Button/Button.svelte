@@ -54,7 +54,7 @@
 >
   {#if icon}
     <div class="icon-content">
-      <Icon {dense} {small}>{icon}</Icon>
+      <Icon {small}>{icon}</Icon>
     </div>
   {/if}
   <slot />

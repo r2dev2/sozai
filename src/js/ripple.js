@@ -26,7 +26,7 @@ const defaults = {
 /**
  * Creates a ripple element but does not destroy it (use RippleStop for that)
  *
- * @param {Event} e
+ * @param {TouchEvent | MouseEvent | KeyboardEvent} e
  * @param {Partial<RippleOptions>} options
  * @returns Ripple element
  */
@@ -34,10 +34,13 @@ function RippleStart(e, options = {}) {
   e.stopImmediatePropagation();
   const opts = { ...defaults, ...options };
 
-  const isTouchEvent = e.touches ? !!e.touches[0] : false;
+  /** @type {(e: Event) => e is TouchEvent} */
+  // @ts-ignore
+  const computeIsTouchEvent = e => e.touches ? e.touches.length : false;
+
+  const isTouchEvent = computeIsTouchEvent(e);
   // Parent element
-  /** @type {HTMLElement} */
-  const target = isTouchEvent ? e.touches[0].currentTarget : e.currentTarget;
+  const target = /** @type {HTMLElement} */ (isTouchEvent ? e.touches[0].target : e.currentTarget);
 
   // Create ripple
   const ripple = document.createElement('div');
@@ -54,7 +57,7 @@ function RippleStart(e, options = {}) {
   rippleStyle.marginTop = '-50px';
   rippleStyle.marginLeft = '-50px';
   if (!opts.disabled) target.appendChild(ripple);
-  rippleStyle.opacity = opts.opacity;
+  rippleStyle.opacity = `${opts.opacity}`;
   rippleStyle.transition = `transform ${opts.spreadingDuration} ${opts.spreadingTimingFunction} ${opts.spreadingDelay},opacity ${opts.clearingDuration} ${opts.clearingTimingFunction} ${opts.clearingDelay}`;
   rippleStyle.transform = 'scale(0) translate(0,0)';
   rippleStyle.background = opts.color;
@@ -63,7 +66,9 @@ function RippleStart(e, options = {}) {
   // idk why but this needs to be setTimeouted or it doesn't work for selects
   setTimeout(() => {
     const targetRect = target.getBoundingClientRect();
-    if (opts.centered) {
+    /** @type {(e: Event) => e is KeyboardEvent} */
+    const isKeyboardEvent = e => opts.centered;
+    if (isKeyboardEvent(e)) {
       rippleStyle.top = `${targetRect.height / 2}px`;
       rippleStyle.left = `${targetRect.width / 2}px`;
     } else {
@@ -84,18 +89,18 @@ function RippleStart(e, options = {}) {
 /**
  * Destroys the ripple, slowly fading it out.
  *
- * @param {Element} ripple
+ * @param {HTMLElement} ripple
  */
 function RippleStop(ripple) {
   if (ripple) {
     ripple.addEventListener('transitionend', (e) => {
       if (e.propertyName === 'opacity') ripple.remove();
     });
-    ripple.style.opacity = 0;
+    ripple.style.opacity = '0';
   }
 }
 
-/** @type {(node: HTMLElement, _options: Partial<RippleOptions>) => { update: (newOptions: Partial<RippleOptions>) => void, destroy: () => void }} */
+/** @type {(node: HTMLElement, _options?: Partial<RippleOptions>) => { update: (newOptions: Partial<RippleOptions>) => void, destroy: () => void }} */
 export default (node, _options = {}) => {
   let options = _options;
   let destroyed = false;

@@ -1,7 +1,6 @@
 <svelte:options immutable />
 
 <script>
-  import { onMount } from 'svelte';
   import { fontLoaded, theme } from '../../js/store.js';
 
   // export let noicon = false;

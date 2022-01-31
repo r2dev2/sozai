@@ -20,7 +20,7 @@
 
   const dispatch = createEventDispatcher();
 
-  /** @type {Set<HTMLElement} */
+  /** @type {Set<HTMLElement>} */
   const activeTransformTransitionRipples = new Set();
 
   const deactivate = () => {
@@ -51,7 +51,7 @@
   /** @type {(e: TransitionEvent) => void} */
   const onTransitionEnd = e => {
     if (e.propertyName == 'transform') {
-      activeTransformTransitionRipples.delete(e.target);
+      activeTransformTransitionRipples.delete(/** @type {HTMLElement} */ (e.target));
     }
   };
 </script>
