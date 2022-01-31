@@ -16,7 +16,7 @@ jobs:
         run: yarn
 
       - name: Build docs
-        run: yarn build:examples
+        run: yarn build:examples && cp examples/build/index.html examples/index.html
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@3.6.2
