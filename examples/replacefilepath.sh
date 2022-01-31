@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 jssum=$(md5sum build/bundle.js | awk '{print $1}')
 csssum=$(md5sum build/bundle.css | awk '{print $1}')
 
