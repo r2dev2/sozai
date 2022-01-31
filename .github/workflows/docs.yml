@@ -17,10 +17,10 @@ jobs:
 
       - name: Build docs
         run: yarn build:examples && cp examples/build/index.html examples/index.html
-
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@3.6.2
+      
+      - name: deploy
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: examples
+          github_token: ${{ github.token }}
+          publish_dir: ./examples
+          cname: sozai.taskaru.app
