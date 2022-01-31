@@ -22,7 +22,7 @@
 
   const componentNames = Object.keys(components).map(text => ({ text }));
 
-  let toShow = window.localStorage.getItem('com') ?? new URLSearchParams(location.search).get('com');
+  let toShow = parseInt(window.localStorage.getItem('com') ?? new URLSearchParams(location.search).get('com'));
   const defaultTheme = window.localStorage.getItem('theme');
 
   if (defaultTheme) {
@@ -34,7 +34,7 @@
   }
 
   $: component = Object.values(components)[toShow];
-  $: window.localStorage.setItem('com', toShow);
+  $: window.localStorage.setItem('com', `${toShow}`);
   $: window.localStorage.setItem('theme', $theme);
 </script>
 

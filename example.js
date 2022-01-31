@@ -1,8 +1,16 @@
 import { derived, readable } from 'svelte/store';
 
+/**
+ * @template T
+ * @typedef {import('svelte/store').Readable<T>} Readable<T>
+ */
+
+/** @typedef {{ sources: string[], sourcesContent: string[] }} SourceMap */
+
 const sozaiSrc = '../src/components/SozaiApp/SozaiApp.svelte';
 let sourceMap = null;
 
+/** @type {() => Readable<SourceMap>} */
 export const getSourceMap = () => readable(sourceMap, set => {
 	if (sourceMap != null) return;
 	fetch('./build/bundle.js.map')
@@ -14,6 +22,7 @@ export const getSourceMap = () => readable(sourceMap, set => {
 		.catch(e => console.error('Failed to fetch source map', e));
 });
 
+/** @type {(filename: string) => Readable<string>} */
 export const getSource = filename => derived(getSourceMap(), $sourceMap => {
 	if ($sourceMap == null) return '...';
 	const idx = $sourceMap.sources.findIndex(s => s == `../${filename}`);
@@ -21,6 +30,7 @@ export const getSource = filename => derived(getSourceMap(), $sourceMap => {
 	return $sourceMap.sourcesContent[idx];
 });
 
+/** @type {(filename: string, name: string) => Readable<string>} */
 export const getExample = (filename, name) => derived(getSource(filename), $source => {
 	if ($source == '...' || $source.startsWith('ERR')) return $source;
 	// parsing html with regex will cause zalgo to come
@@ -57,6 +67,7 @@ const parseDocExp = /(.+): (.+); \/\* (.+) \*\//;
 const hexExp = /\#(..)(..)(..)/;
 
 // whether the hex color is grayscale and very white
+/** @type {(color: string) => boolean} */
 const isVeryLight = color => {
 	const [_, r, g, b] = hexExp
 		.exec(color)

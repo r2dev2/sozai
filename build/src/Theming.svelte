@@ -1,4 +1,6 @@
 <script>
+// @ts-nocheck
+
   import Prism from 'prismjs';
   import 'prism-svelte';
   import 'prismjs/themes/prism.css';
