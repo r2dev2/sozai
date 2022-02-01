@@ -1,5 +1,6 @@
 <script>
   import { createEventDispatcher, onMount, setContext } from 'svelte';
+import { noop } from 'svelte/internal';
   import { writable } from 'svelte/store';
   import { listKey } from '../../js/constants.js';
 
@@ -10,7 +11,9 @@
   /** @type {Element | undefined}*/
   let ul;
   /** @typedef {(e: MouseEvent) => void} MouseEventCB*/
-  /** @type {Array<Element & Partial<{ __sozaiListOnClick: MouseEventCB, setSelected: (s: boolean) => void, getSelected: () => boolean}>>} */
+  /** @typedef {HTMLElement & { __sozaiListOnClick: MouseEventCB, setSelected: (s: boolean) => void, getSelected: () => boolean }} SListItem */
+
+  /** @type {Array<Element | SListItem>} */
   let children = [];
 
   const isSelectable = writable(selectable);
@@ -26,16 +29,20 @@
 
   const dispatch = createEventDispatcher();
 
+  /** @type {(el: Element) => el is SListItem}*/
+  const isSListItem = el => 'setSelected' in el;
+
   const updateChildren = () => {
     if (!ul) return;
     children = [...ul.querySelectorAll(':scope > .s-listitem')];
     selected = children
       .map((el, i) => /** @type {[typeof children[0], number]} */ ([el, i]))
-      .filter(([el]) => el?.getSelected())
+      .filter(([el]) => isSListItem(el) ? el.getSelected() : false)
       .map(([_el, i]) => i);
   };
 
   onMount(() => {
+    if (!ul) return;
     const config = { childList: true };
     const observer = new MutationObserver(updateChildren);
     observer.observe(ul, config);
@@ -44,11 +51,13 @@
   });
 
   // needed to trick svelte compiler from false circular dependency shhhh
+  /** @type {(u: typeof selected) => any}*/
   const updateSelected = (u) => (selected = u);
 
   $: selectedSet = new Set(selected);
   $: selectedSet,
   children.forEach((child, i) => {
+    if (!isSListItem(child)) return;
     child.setSelected(selectedSet.has(i));
     /** @type {(e: MouseEvent) => void}*/
     child.__sozaiListOnClick = (e) => {
@@ -63,7 +72,9 @@
       if (!multiselect && selected.includes(i)) {
         selected
           .filter((s) => s !== i)
-          .forEach((s) => children[s].setSelected(false));
+          .map(s => children[s])
+          .filter(isSListItem)
+          .forEach(c => c.setSelected(false));
         updateSelected([i]);
       }
       child.setSelected(!child.getSelected());

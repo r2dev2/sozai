@@ -12,7 +12,7 @@ const sozaiSrc = '../src/components/SozaiApp/SozaiApp.svelte';
 /** @type {SourceMap | null} */
 let sourceMap = null;
 
-/** @type {() => Readable<SourceMap>} */
+/** @type {() => Readable<SourceMap | null>} */
 export const getSourceMap = () =>
   readable(sourceMap, (set) => {
     if (sourceMap !== null) return;
@@ -78,7 +78,9 @@ const hexExp = /#(..)(..)(..)/;
 // whether the hex color is grayscale and very white
 /** @type {(color: string) => boolean} */
 const isVeryLight = (color) => {
-  const [_, r, g, b] = hexExp.exec(color).map((c) => parseInt(c, 16));
+  const splitColors = hexExp.exec(color);
+  if (splitColors === null) return false;
+  const [_, r, g, b] = splitColors.map((c) => parseInt(c, 16));
   const isGrayscale = Math.abs(r - g) + Math.abs(g - b) + Math.abs(r - b) < 50;
   const mostIntense = Math.max(r, g, b);
   return isGrayscale && mostIntense > 140;
@@ -111,8 +113,10 @@ export const getCssDocs = () =>
         continue;
       }
       if (isCollectingSectionInfo) {
-        const [headerName, headerValue] = line.split(': ');
-        currentSection[headerName.toLowerCase()] = headerValue;
+        const [rawHeaderName, headerValue] = line.split(': ');
+        const headerName = rawHeaderName.toLowerCase();
+        if (headerName === 'section' || headerName === 'description')
+          currentSection[headerName] = headerValue;
         continue;
       }
       const parsed = parseDocExp.exec(line);

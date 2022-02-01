@@ -112,12 +112,15 @@ function RippleStop(ripple) {
 export default (node, _options = {}) => {
   let options = _options;
   let destroyed = false;
+  /** @type {HTMLElement | undefined} */
   let ripple;
   let keyboardActive = false;
+  /** @type {(e: KeyboardEvent | TouchEvent | MouseEvent) => void} */
   const handleStart = (e) => {
     ripple = RippleStart(e, options);
   };
-  const handleStop = () => RippleStop(ripple);
+  const handleStop = () => ripple && RippleStop(ripple);
+  /** @type {(e: KeyboardEvent) => void} */
   const handleKeyboardStart = (e) => {
     if (!keyboardActive && (e.keyCode === 13 || e.keyCode === 32)) {
       ripple = RippleStart(e, { ...options, centered: true });

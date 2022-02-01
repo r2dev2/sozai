@@ -69,7 +69,7 @@
   on:transitionend={onTransitionEnd}
 >
   <TextField
-    value={items[value]?.text ?? ''}
+    value={items[value ?? -1]?.text ?? ''}
     disabled={active}
     focused={active}
     on:click={() => (active = !active)}
@@ -86,7 +86,7 @@
     <div class="options fade-in">
       <List
         selectable
-        selected={[value].filter((x) => x != null)}
+        selected={value !== null ? [value] : []}
         on:change={(e) => selectValue(e.detail.selected[0])}
       >
         {#each items as item}

@@ -62,11 +62,15 @@ export function forwardEventsBuilder(component, additionalEvents = []) {
     ...additionalEvents,
   ];
 
+  /**
+   * @param {any} e
+   */
   function forward(e) {
     bubble(component, e);
   }
 
   return (node) => {
+    /** @type {Function[]} */
     const destructors = [];
 
     for (let i = 0; i < events.length; i++) {
