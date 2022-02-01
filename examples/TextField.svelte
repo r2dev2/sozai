@@ -49,7 +49,13 @@
     </Example>
 
     <Example name="outlined-textarea-textfield" {filename}>
-      <TextField label="Outlined textarea" textarea rows={4} outlined color="blue" />
+      <TextField
+        label="Outlined textarea"
+        textarea
+        rows={4}
+        outlined
+        color="blue"
+      />
     </Example>
   </Examples>
 </div>

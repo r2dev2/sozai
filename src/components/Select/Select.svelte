@@ -34,24 +34,29 @@
   };
 
   /** @type {(num: number) => void}*/
-  const selectValue = num => {
+  const selectValue = (num) => {
     value = num;
     dispatch('change', { value });
     deactivate();
   };
 
   /** @type {(e: TransitionEvent) => void} */
-  const onTransitionStart = e => {
+  const onTransitionStart = (e) => {
     const target = /** @type {HTMLElement}*/ (e.target);
-    if (e.propertyName == 'transform' && target.classList.contains('material-ripple')) {
+    if (
+      e.propertyName == 'transform' &&
+      target.classList.contains('material-ripple')
+    ) {
       activeTransformTransitionRipples.add(target);
     }
   };
 
   /** @type {(e: TransitionEvent) => void} */
-  const onTransitionEnd = e => {
+  const onTransitionEnd = (e) => {
     if (e.propertyName == 'transform') {
-      activeTransformTransitionRipples.delete(/** @type {HTMLElement} */ (e.target));
+      activeTransformTransitionRipples.delete(
+        /** @type {HTMLElement} */ (e.target)
+      );
     }
   };
 </script>
@@ -81,8 +86,8 @@
     <div class="options fade-in">
       <List
         selectable
-        selected={[value].filter(x => x != null)}
-        on:change={e => selectValue(e.detail.selected[0])}
+        selected={[value].filter((x) => x != null)}
+        on:change={(e) => selectValue(e.detail.selected[0])}
       >
         {#each items as item}
           <ListItem>

@@ -1,5 +1,3 @@
-<svelte:options immutable />
-
 <script>
   export let small = false;
   export let xs = false;
@@ -12,6 +10,8 @@
   $: style_ = `${color ? `--color: ${color};` : ''} ${style}`.trim();
 </script>
 
+<svelte:options immutable />
+
 <i
   aria-hidden
   class={klass}
@@ -22,7 +22,7 @@
   on:click
   style={style_}
 >
-<slot />
+  <slot />
 </i>
 
 <style>

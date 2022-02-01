@@ -23,18 +23,18 @@
 
   const { selectable, multiselect } = {
     ...defaultStores,
-    .../** @type {typeof defaultStores} */ (getContext(listKey))
+    .../** @type {typeof defaultStores} */ (getContext(listKey)),
   };
 
   const forwardEvents = forwardEventsBuilder(get_current_component());
 
   onMount(() => {
     // @ts-ignore
-    li.setSelected = s => selected = s;
+    li.setSelected = (s) => (selected = s);
     // @ts-ignore
     li.getSelected = () => selected;
   });
-  
+
   $: actualColor = getColor(color);
   $: style_ = `--color: ${actualColor};`;
 </script>
@@ -49,7 +49,9 @@
 >
   <slot name="prepend">
     {#if icon}
-      <Icon color={selected ? actualColor : 'var(--secondary-color)'}>{icon}</Icon>
+      <Icon color={selected ? actualColor : 'var(--secondary-color)'}
+        >{icon}</Icon
+      >
     {/if}
   </slot>
   <slot>
@@ -90,7 +92,8 @@
     background-color: var(--secondary-color);
   }
 
-  .s-listitem:hover::before, .selected::before {
+  .s-listitem:hover::before,
+  .selected::before {
     opacity: 0.12;
   }
 
@@ -107,11 +110,11 @@
     flex-direction: column;
   }
 
-  .s-listitem :global([slot=title]) {
+  .s-listitem :global([slot='title']) {
     font-size: var(--font-size-medium);
   }
 
-  .s-listitem :global([slot=subtitle]) {
+  .s-listitem :global([slot='subtitle']) {
     font-size: var(--font-size-small);
     opacity: var(--listitem-subtitle-opacity);
   }

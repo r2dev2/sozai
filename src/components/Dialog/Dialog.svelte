@@ -1,6 +1,5 @@
 <script>
   import { scale } from 'svelte/transition';
-  import { onMount } from 'svelte';
   import { quadIn } from 'svelte/easing';
   import Scrim from '../Util/Scrim.svelte';
   import { getColor } from '../../js/utils.js';

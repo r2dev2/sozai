@@ -36,11 +36,13 @@ function RippleStart(e, options = {}) {
 
   /** @type {(e: Event) => e is TouchEvent} */
   // @ts-ignore
-  const computeIsTouchEvent = e => e.touches ? e.touches.length : false;
+  const computeIsTouchEvent = (e) => (e.touches ? e.touches.length : false);
 
   const isTouchEvent = computeIsTouchEvent(e);
   // Parent element
-  const target = /** @type {HTMLElement} */ (isTouchEvent ? e.touches[0].target : e.currentTarget);
+  const target = /** @type {HTMLElement} */ (
+    isTouchEvent ? e.touches[0].target : e.currentTarget
+  );
 
   // Create ripple
   const ripple = document.createElement('div');
@@ -67,7 +69,7 @@ function RippleStart(e, options = {}) {
   setTimeout(() => {
     const targetRect = target.getBoundingClientRect();
     /** @type {(e: Event) => e is KeyboardEvent} */
-    const isKeyboardEvent = e => opts.centered;
+    const isKeyboardEvent = (e) => opts.centered;
     if (isKeyboardEvent(e)) {
       rippleStyle.top = `${targetRect.height / 2}px`;
       rippleStyle.left = `${targetRect.width / 2}px`;
@@ -82,7 +84,7 @@ function RippleStart(e, options = {}) {
     rippleStyle.transform = `scale(${
       Math.max(targetRect.width, targetRect.height) * 0.02
     }) translate(0,0)`;
-    });
+  });
   return ripple;
 }
 
@@ -100,7 +102,13 @@ function RippleStop(ripple) {
   }
 }
 
-/** @type {(node: HTMLElement, _options?: Partial<RippleOptions>) => { update: (newOptions: Partial<RippleOptions>) => void, destroy: () => void }} */
+/**
+ * @param {HTMLElement} node
+ * @param {Partial<RippleOptions>} _options
+ * @returns {{
+ *  update: (newOptions: Partial<RippleOptions>) => void, destroy: () => void
+ * }}
+ */
 export default (node, _options = {}) => {
   let options = _options;
   let destroyed = false;

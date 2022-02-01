@@ -15,31 +15,37 @@
       <h5 slot="title">What do you think?</h5>
       <p>I'm not sure about today's weather</p>
       <div slot="actions">
-        <Button text on:click={() => showFirstDialog = false}>Disagree</Button>
-        <Button text on:click={() => showFirstDialog = false}>Agree</Button>
+        <Button text on:click={() => (showFirstDialog = false)}>Disagree</Button
+        >
+        <Button text on:click={() => (showFirstDialog = false)}>Agree</Button>
       </div>
     </Dialog>
 
     <!-- Activator Button -->
-    <Button on:click={() => showFirstDialog = true}>Show Dialog</Button>
+    <Button on:click={() => (showFirstDialog = true)}>Show Dialog</Button>
   </Example>
-  
+
   <Example name="persistent-dialog" {filename}>
     <Dialog persistent bind:value={showSecondDialog}>
       <h5 slot="title">Do you think you can close me by clicking outside?</h5>
       <p>Dewit</p>
       <div slot="actions">
-        <Button text on:click={() => showSecondDialog = false}>Hehe boi</Button>
+        <Button text on:click={() => (showSecondDialog = false)}
+          >Hehe boi</Button
+        >
       </div>
     </Dialog>
 
     <!-- Activator Button -->
-    <Button color="green" on:click={() => showSecondDialog = true}>Show Persistent Dialog</Button>
+    <Button color="green" on:click={() => (showSecondDialog = true)}
+      >Show Persistent Dialog</Button
+    >
   </Example>
 </Examples>
 
 <style>
-  h5, p {
+  h5,
+  p {
     text-align: left;
   }
 </style>

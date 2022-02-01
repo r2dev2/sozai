@@ -20,9 +20,12 @@
     typography: Typography,
   };
 
-  const componentNames = Object.keys(components).map(text => ({ text }));
+  const componentNames = Object.keys(components).map((text) => ({ text }));
 
-  let toShow = parseInt(window.localStorage.getItem('com') ?? new URLSearchParams(location.search).get('com'));
+  let toShow = parseInt(
+    window.localStorage.getItem('com') ??
+      new URLSearchParams(location.search).get('com')
+  );
   const defaultTheme = window.localStorage.getItem('theme');
 
   if (defaultTheme) {
@@ -45,7 +48,12 @@
         <h1>Sozai</h1>
       </div>
       <div class="demo-chooser">
-        <Select bind:value={toShow} label="Component" dense items={componentNames} />
+        <Select
+          bind:value={toShow}
+          label="Component"
+          dense
+          items={componentNames}
+        />
         <!--
         <label for="to-demo">Component to demo</label>
         <select bind:value={toShow} name="to-demo">
@@ -57,11 +65,14 @@
       </div>
       <div class="light-dark-toggle">
         <Button
-         color={$theme == 'dark' ? 'white' : 'black'}
-         icon="wb_sunny"
-         on:click={() => theme.set($theme == 'dark' ? 'light' : 'dark')}
-         text light flat dense
-       />
+          color={$theme === 'dark' ? 'white' : 'black'}
+          icon="wb_sunny"
+          on:click={() => theme.set($theme === 'dark' ? 'light' : 'dark')}
+          text
+          light
+          flat
+          dense
+        />
       </div>
     </header>
     <div class="demo">
@@ -103,14 +114,14 @@
     top: 0;
     left: 0;
     width: calc(100% - 2rem);
-    background-color: #1D1D1D;
+    background-color: #1d1d1d;
     box-shadow: var(--nav-shadow);
     padding: 1rem;
     z-index: 30;
   }
 
-  :global([data-theme=light]) header {
-    background-color: #F5F5F5;
+  :global([data-theme='light']) header {
+    background-color: #f5f5f5;
   }
 
   header h1 {

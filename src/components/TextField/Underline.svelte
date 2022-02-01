@@ -37,7 +37,8 @@
     transition: width 200ms ease;
   }
 
-  .focused, .error {
+  .focused,
+  .error {
     width: 100%;
   }
 

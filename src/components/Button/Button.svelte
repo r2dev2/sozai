@@ -74,7 +74,7 @@
 
     background-color: var(--button-color);
     border-color: var(--button-color);
-    color: #FFFFFF;
+    color: #ffffff;
 
     border-radius: var(--border-radius-rounded);
     border-width: var(--border-width);
@@ -93,7 +93,8 @@
     filter: var(--brighten);
   }
 
-  .dark, .dark:hover {
+  .dark,
+  .dark:hover {
     filter: var(--darken);
   }
 
@@ -101,7 +102,8 @@
     width: 100%;
   }
 
-  .outlined, .text {
+  .outlined,
+  .text {
     --hover-opacity: 0.2;
     background-color: transparent;
     box-shadow: none;
@@ -112,11 +114,14 @@
     border: 0px;
   }
 
-  .outlined, .flat, .text {
+  .outlined,
+  .flat,
+  .text {
     color: var(--button-color);
   }
 
-  .outlined:hover::after, .text:hover::after {
+  .outlined:hover::after,
+  .text:hover::after {
     content: '';
 
     position: absolute;
@@ -131,7 +136,8 @@
     opacity: var(--hover-opacity, 0.2);
   }
 
-  [disabled], [disabled]:hover {
+  [disabled],
+  [disabled]:hover {
     background-color: var(--disabled-bg-color);
     border-color: var(--disabled-bg-color);
     color: var(--disabled-text-color);

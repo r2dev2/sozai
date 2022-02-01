@@ -8,45 +8,31 @@
 
 <Examples name="Button">
   <Example name="basic-button" {filename}>
-    <Button>
-      Basic Button
-    </Button>
+    <Button>Basic Button</Button>
   </Example>
 
   <Example name="light-button" {filename}>
-    <Button light>
-      Light Button
-    </Button>
+    <Button light>Light Button</Button>
   </Example>
-  
+
   <Example name="dark-button" {filename}>
-    <Button dark>
-      Dark Button
-    </Button>
+    <Button dark>Dark Button</Button>
   </Example>
 
   <Example name="bloc-button" {filename}>
-    <Button color="alert" dark block>
-      Block Button
-    </Button>
+    <Button color="alert" dark block>Block Button</Button>
   </Example>
 
   <Example name="outlined-button" {filename}>
-    <Button color="green" light block outlined>
-      Outlined Button
-    </Button>
+    <Button color="green" light block outlined>Outlined Button</Button>
   </Example>
 
   <Example name="text-button" {filename}>
-    <Button text>
-      Text Button
-    </Button>
+    <Button text>Text Button</Button>
   </Example>
 
   <Example name="disabled-button" {filename}>
-    <Button block disabled>
-      Disabled Button
-    </Button>
+    <Button block disabled>Disabled Button</Button>
   </Example>
 
   <Example name="fab-button" {filename}>

@@ -18,14 +18,20 @@
   let loaded = false;
 
   $: if (labelWidth > 0 && $fontLoaded) {
-    tick().then(() => loaded = true);
+    tick().then(() => (loaded = true));
   }
-  $: style = `--color: ${getColor(color)}; --bg-color: ${bgColor}; --label-width: ${labelWidth}px;`;
+  $: style = `--color: ${getColor(
+    color
+  )}; --bg-color: ${bgColor}; --label-width: ${labelWidth}px;`;
 </script>
 
 <div class="s-label" {style}>
-  <div class="outlined-cover" class:cover={outlined && labelOnTop} class:loaded />
-  
+  <div
+    class="outlined-cover"
+    class:cover={outlined && labelOnTop}
+    class:loaded
+  />
+
   <label
     bind:clientWidth={labelWidth}
     class:dense
@@ -42,7 +48,7 @@
 <style>
   .outlined-cover {
     position: absolute;
-    top: -.375rem;
+    top: -0.375rem;
     left: 0.5rem;
     height: 11px;
     width: 0.001px;
@@ -51,7 +57,7 @@
 
   .outlined-cover.loaded {
     /* get cubic bezier from vuetify */
-    transition: width var(--transition-duration) cubic-bezier(.25,.8,.5,1);
+    transition: width var(--transition-duration) cubic-bezier(0.25, 0.8, 0.5, 1);
   }
 
   .cover {

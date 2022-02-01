@@ -1,5 +1,4 @@
 <script>
-  import { onMount } from 'svelte';
   import { get_current_component } from 'svelte/internal';
 
   import { forwardEventsBuilder } from '../../js/forwardEvents.js';
@@ -180,7 +179,9 @@
     padding: calc(0.5rem - 1px) calc(0.75rem - 1px);
   }
 
-  .s-input.error,.s-input.error:focus,.s-input.error:hover {
+  .s-input.error,
+  .s-input.error:focus,
+  .s-input.error:hover {
     caret-color: var(--error-color);
     border-color: var(--error-color);
   }

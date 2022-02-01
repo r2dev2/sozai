@@ -1,5 +1,3 @@
-<svelte:options immutable />
-
 <script>
   import { fly } from 'svelte/transition';
   import { quadOut } from 'svelte/easing';
@@ -9,6 +7,8 @@
   export let beeg = false;
   export let transitionProps = { y: -10, duration: 100, easing: quadOut };
 </script>
+
+<svelte:options immutable />
 
 <div
   class="s-hint"

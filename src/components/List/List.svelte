@@ -20,13 +20,15 @@
   $: isMultiselect.set(multiselect);
 
   setContext(listKey, {
-    selectable: isSelectable, multiselect: isMultiselect
+    selectable: isSelectable,
+    multiselect: isMultiselect,
   });
 
   const dispatch = createEventDispatcher();
 
   const updateChildren = () => {
-    children = [...ul?.querySelectorAll(':scope > .s-listitem')];
+    if (!ul) return;
+    children = [...ul.querySelectorAll(':scope > .s-listitem')];
     selected = children
       .map((el, i) => /** @type {[typeof children[0], number]} */ ([el, i]))
       .filter(([el]) => el?.getSelected())
@@ -42,23 +44,26 @@
   });
 
   // needed to trick svelte compiler from false circular dependency shhhh
-  const updateSelected = u => selected = u;
+  const updateSelected = (u) => (selected = u);
 
   $: selectedSet = new Set(selected);
-  $: selectedSet, children.forEach((child, i) => {
+  $: selectedSet,
+  children.forEach((child, i) => {
     child.setSelected(selectedSet.has(i));
     /** @type {(e: MouseEvent) => void}*/
-    child.__sozaiListOnClick = e => {
+    child.__sozaiListOnClick = (e) => {
       if (!selectable) return;
       e.stopImmediatePropagation();
       if (child.getSelected() && selectedSet.has(i) && multiselect) {
-        updateSelected(selected.filter(s => s != i));
+        updateSelected(selected.filter((s) => s != i));
       }
       if (!child.getSelected() && !selectedSet.has(i)) {
         updateSelected([...selected, i].sort());
       }
       if (!multiselect && selected.includes(i)) {
-        selected.filter(s => s !== i).forEach(s => children[s].setSelected(false));
+        selected
+          .filter((s) => s !== i)
+          .forEach((s) => children[s].setSelected(false));
         updateSelected([i]);
       }
       child.setSelected(!child.getSelected());

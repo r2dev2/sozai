@@ -1,5 +1,9 @@
 const sozaiPalleteColors = new Set([
-  'primary', 'secondary', 'error', 'success', 'alert'
+  'primary',
+  'secondary',
+  'error',
+  'success',
+  'alert',
 ]);
 
 // uses array spread to foil eslint formatting into vertical line
@@ -10,7 +14,7 @@ const materialPalleteColors = new Set([
 ]);
 
 /** @type {(color: string) => string} */
-export const getColor = color => {
+export const getColor = (color) => {
   if (sozaiPalleteColors.has(color)) {
     return `var(--${color}-color)`;
   }
