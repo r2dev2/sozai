@@ -9,7 +9,7 @@
     { value: 1, text: 'one' },
     { value: 2, text: 'two' },
     { value: 3, text: 'three' },
-    { value: 4, text: 'four' }
+    { value: 4, text: 'four' },
   ];
 </script>
 

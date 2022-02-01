@@ -1,10 +1,11 @@
 <script>
-// @ts-nocheck
+  // @ts-nocheck
 
   import Prism from 'prismjs';
   import 'prism-svelte';
   import 'prismjs/themes/prism.css';
 
+  import { exampleApp, exampleTheming } from './constants.js';
   import { getCssDocs } from './example.js';
 
   const docs = getCssDocs();
@@ -13,54 +14,28 @@
 <div class="theming-docs">
   <section name="intro">
     <h2>Introduction</h2>
-    <p>Theming Sozai apps is done through overriding the css variables in this document.</p>
+    <p>
+      Theming Sozai apps is done through overriding the css variables in this
+      document.
+    </p>
     <pre class="language-svelte">
       <code>
-{@html Prism.highlight(`
-<!-- Root app -->
-<script>
-  import { SozaiApp } from 'sozai';
-</script>
-
-<SozaiApp>
-  <!-- Your app -->
-</SozaiApp>
-
-<style>
-  :root {
-    /* Override --primary-color, '!imporant' is necessary */
-    --primary-color: var(--red) !important;
-  }
-</style>
-`.trim(), Prism.languages.svelte, 'svelte')}
+{@html Prism.highlight(exampleApp, Prism.languages.svelte, 'svelte')}
       </code>
     </pre>
   </section>
 
   <section name="multiple-themes">
     <h2>Multiple Themes</h2>
-    <p>Sozai apps may have multiple themes. The current theme is set through a theming store which is a string value of the theme name. Theme palletes are modified through [data-theme=] selectors. Sozai ships with a light theme and a dark theme.</p>
+    <p>
+      Sozai apps may have multiple themes. The current theme is set through a
+      theming store which is a string value of the theme name. Theme palletes
+      are modified through [data-theme=] selectors. Sozai ships with a light
+      theme and a dark theme.
+    </p>
     <pre class="language-svelte">
       <code>
-{@html Prism.highlight(`
-<script>
-  import { onMount } from 'svelte';
-  import { theme } from 'sozai';
-
-  onMount(() =>{ 
-    theme.set('dark'); // can set to light, dark, or whatever your custom theme is named
-  });
-</script>
-<style>
-  :root[data-theme=dark] { /* data-theme="theme name" */
-    --app-bg-color: #212121 !important;
-  }
-
-  :root[data-theme=custom-theme] {
-    --app-bg-color: var(--red) !important;
-  }
-</style>
-`.trim(), Prism.languages.svelte, 'svelte')}
+{@html Prism.highlight(exampleTheming, Prism.languages.svelte, 'svelte')}
       </code>
     </pre>
   </section>
@@ -96,12 +71,15 @@
     padding-bottom: 2rem;
   }
 
-  table, td, th {
+  table,
+  td,
+  th {
     border: 1px solid black;
     border-collapse: collapse;
   }
 
-  th, td {
+  th,
+  td {
     padding: 0.25rem 0.5rem;
   }
 

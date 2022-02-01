@@ -8,9 +8,7 @@
   export let filename = '';
   export let name = '';
 
-
   $: exampleSource = getExample(filename, name);
-
 </script>
 
 <tr>
