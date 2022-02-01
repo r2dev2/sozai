@@ -24,7 +24,8 @@
 
   let toShow = parseInt(
     window.localStorage.getItem('com') ??
-      new URLSearchParams(location.search).get('com')
+      new URLSearchParams(location.search).get('com') ??
+      '0'
   );
   const defaultTheme = window.localStorage.getItem('theme');
 
