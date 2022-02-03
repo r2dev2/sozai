@@ -13,6 +13,8 @@
   // export let prepend = false;
   export let color = 'primary';
   export let bgColor = 'var(--app-bg-color)';
+  let for_ = '';
+  export { for_ as for };
 
   let labelWidth = 0;
   let loaded = false;
@@ -40,6 +42,7 @@
     class:outlined
     class:top={labelOnTop}
     class:focused
+    for={for_}
   >
     <slot />
   </label>

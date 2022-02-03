@@ -1,3 +1,7 @@
+<script context="module">
+  let amountCreated = 0;
+</script>
+
 <script>
   import { get_current_component } from 'svelte/internal';
 
@@ -18,7 +22,7 @@
   export let hint = '';
   export let error = '';
   // export let append = '';
-  export let prepend = '';
+  // export let prepend = '';
   export let persistentHint = false;
   export let textarea = false;
   export let rows = 6;
@@ -32,6 +36,7 @@
   export let focused = false;
   export let klass = '';
   export let style = '';
+  export let id = '';
 
   const toggleFocus = () => {
     focused = !focused;
@@ -39,6 +44,9 @@
 
   const forwardEvents = forwardEventsBuilder(get_current_component());
 
+  $: if (id === '') {
+    id = `s-input-${amountCreated++}`;
+  }
   $: showHint = error || (persistentHint ? hint : focused && hint);
   $: labelOnTop = Boolean(placeholder || focused || value);
   $: actualColor = getColor(color);
@@ -55,9 +63,9 @@
         error={Boolean(error)}
         {outlined}
         {filled}
-        prepend={Boolean(prepend)}
         {color}
         {bgColor}
+        for={id}
       >
         {label}
       </Label>
@@ -74,6 +82,7 @@
       class:outlined
       class:error
       {disabled}
+      {id}
       on:focus={toggleFocus}
       on:blur={toggleFocus}
       use:forwardEvents
@@ -90,6 +99,7 @@
       class:outlined
       class:error
       {disabled}
+      {id}
       on:focus={toggleFocus}
       on:blur={toggleFocus}
       use:forwardEvents
