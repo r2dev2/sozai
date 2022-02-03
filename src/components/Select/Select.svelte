@@ -9,6 +9,7 @@
   import List from '../List/List.svelte';
   import ListItem from '../List/ListItem.svelte';
   import Icon from '../Icon/Icon.svelte';
+  import Scrim from '../Util/Scrim.svelte';
 
   export let label = '';
   export let active = false;
@@ -44,7 +45,7 @@
   const onTransitionStart = (e) => {
     const target = /** @type {HTMLElement}*/ (e.target);
     if (
-      e.propertyName == 'transform' &&
+      e.propertyName === 'transform' &&
       target.classList.contains('material-ripple')
     ) {
       activeTransformTransitionRipples.add(target);
@@ -53,7 +54,7 @@
 
   /** @type {(e: TransitionEvent) => void} */
   const onTransitionEnd = (e) => {
-    if (e.propertyName == 'transform') {
+    if (e.propertyName === 'transform') {
       activeTransformTransitionRipples.delete(
         /** @type {HTMLElement} */ (e.target)
       );
@@ -72,7 +73,7 @@
     value={items[value ?? -1]?.text ?? ''}
     disabled={active}
     focused={active}
-    on:click={() => (active = !active)}
+    on:click={() => (active = true)}
     {label}
     {outlined}
     {dense}
@@ -83,6 +84,7 @@
   </div>
 
   {#if active}
+    <Scrim opacity={0} notransition on:click={deactivate} />
     <div class="options fade-in">
       <List
         selectable
@@ -128,7 +130,7 @@
 
   .s-select :global(.s-list) {
     position: absolute;
-    z-index: 9;
+    z-index: 20;
     top: 0;
     left: 0;
     width: 100%;

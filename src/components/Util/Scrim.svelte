@@ -5,15 +5,20 @@
   export let opacity = 0.5;
   export let inProps = { duration: 200, easing: quadIn };
   export let outProps = { duration: 200, easing: quadOut };
+  export let notransition = false;
 </script>
 
-<div
-  class="s-scrim"
-  in:fade={inProps}
-  out:fade={outProps}
-  style="opacity: {opacity}"
-  on:click
-/>
+{#if notransition}
+  <div class="s-scrim" style="opacity: {opacity}" on:click />
+{:else}
+  <div
+    class="s-scrim"
+    in:fade={inProps}
+    out:fade={outProps}
+    style="opacity: {opacity}"
+    on:click
+  />
+{/if}
 
 <style>
   .s-scrim {
