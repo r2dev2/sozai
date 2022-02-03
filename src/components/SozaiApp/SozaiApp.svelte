@@ -1,4 +1,5 @@
 <script>
+  /* eslint-disable max-len */
   import { fontLoaded, theme } from '../../js/store.js';
 
   // export let noicon = false;

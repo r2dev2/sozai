@@ -10,7 +10,7 @@
   export let outlined = false;
   export let filled = false;
   export let labelOnTop = false;
-  export let prepend = false;
+  // export let prepend = false;
   export let color = 'primary';
   export let bgColor = 'var(--app-bg-color)';
 
