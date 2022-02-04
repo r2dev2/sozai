@@ -2,6 +2,7 @@
   import { createEventDispatcher, onMount, setContext } from 'svelte';
   import { writable } from 'svelte/store';
   import { listKey } from '../../js/constants.js';
+  import { group } from '../../js/group.js';
 
   export let selectable = false;
   export let multiselect = false;
@@ -51,6 +52,23 @@
     observer.observe(ul, config);
     updateChildren();
     return () => observer.disconnect();
+  });
+
+  onMount(() => {
+    if (!ul) return;
+    const { destroy, selected } = group(
+      listKey,
+      ul,
+      isSelectable,
+      isMultiselect
+    );
+
+    const sSub = selected.subscribe((s) => console.log('LIST SELECTED', s));
+
+    return () => {
+      sSub();
+      destroy();
+    };
   });
 
   // needed to trick svelte compiler from false circular dependency shhhh

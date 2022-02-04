@@ -8,6 +8,7 @@
   import { getColor } from '../../js/utils.js';
 
   import Icon from '../Icon/Icon.svelte';
+  import { groupItem } from '../../js/group.js';
 
   export let color = 'primary';
   export let icon = '';
@@ -33,6 +34,16 @@
     li.setSelected = (s) => (selected = s);
     // @ts-ignore
     li.getSelected = () => selected;
+  });
+
+  onMount(() => {
+    if (!li) return;
+    const { destroy, selected } = groupItem(listKey, li);
+    const sSub = selected.subscribe((s) => console.log('LISTITEM selected', s));
+    return () => {
+      sSub();
+      destroy();
+    };
   });
 
   $: actualColor = getColor(color);
