@@ -19,10 +19,9 @@
 
   const defaultStores = {
     selectable: writable(false),
-    multiselect: writable(false),
   };
 
-  const { selectable, multiselect } = {
+  const { selectable } = {
     ...defaultStores,
     .../** @type {typeof defaultStores} */ (getContext(listKey)),
   };
@@ -30,16 +29,9 @@
   const forwardEvents = forwardEventsBuilder(get_current_component());
 
   onMount(() => {
-    // @ts-ignore
-    li.setSelected = (s) => (selected = s);
-    // @ts-ignore
-    li.getSelected = () => selected;
-  });
-
-  onMount(() => {
     if (!li) return;
-    const { destroy, selected } = groupItem(listKey, li);
-    const sSub = selected.subscribe((s) => console.log('LISTITEM selected', s));
+    const { destroy, selected: ss } = groupItem(listKey, li);
+    const sSub = ss.subscribe((s) => (selected = s));
     return () => {
       sSub();
       destroy();

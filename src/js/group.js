@@ -38,14 +38,13 @@ const documentPositionComparator = (n1, n2) =>
  * @param {Element} element element representing group parent
  * @param {Readable<boolean>} selectable whether group is selectable
  * @param {Readable<boolean>} multiselect whether to allow multiselect
- * @returns {{ destroy: VoidFunction, selected: Writable<number[]> }}
+ * @param {Writable<number[]>} selected indexes that are selected
+ * @returns {{ destroy: VoidFunction  }}
  */
-export const group = (key, element, selectable, multiselect) => {
+export const group = (key, element, selectable, multiselect, selected) => {
   /** @type {Writable<GroupMSG | null>} */
   const channel = writable();
   groups.set(element, channel);
-
-  const selected = writable([0].slice(1));
 
   const unsortedChildren = writable(/** @type {Element[]} */ ([]));
   const children = derived(unsortedChildren, ($c) =>
@@ -73,7 +72,6 @@ export const group = (key, element, selectable, multiselect) => {
     if (msg.type === 'click') {
       if (!get(selectable)) return;
       const index = get(childrenIndex)?.get(msg.element);
-      // console.log('clicked', index, 'have', get(children).length, 'children');
       const currentlySelected = get(selected);
       if (index === undefined) return;
       const isCurrentlySelected = currentlySelected.includes(index);
@@ -107,7 +105,7 @@ export const group = (key, element, selectable, multiselect) => {
     cleanUpUpdateSelected();
   };
 
-  return { destroy, selected };
+  return { destroy };
 };
 
 /**
