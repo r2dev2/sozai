@@ -1,5 +1,5 @@
 <script>
-  import { onMount, setContext } from 'svelte';
+  import { createEventDispatcher, onMount, setContext } from 'svelte';
   import { writable } from 'svelte/store';
   import { listKey } from '../../js/constants.js';
   import { group } from '../../js/group.js';
@@ -7,6 +7,8 @@
   export let selectable = false;
   export let multiselect = false;
   export let selected = [0].slice(1);
+
+  const dispatch = createEventDispatcher();
 
   /** @type {Element | undefined}*/
   let ul;
@@ -20,7 +22,10 @@
   $: isSelectable.set(selectable);
   $: isMultiselect.set(multiselect);
   $: indexesSelected.set(selected);
-  $: selected = $indexesSelected;
+  $: if ($indexesSelected !== selected) {
+    selected = $indexesSelected;
+    dispatch('change', { selected });
+  }
 
   onMount(() => {
     if (!ul) return;
