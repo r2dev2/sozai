@@ -6,6 +6,7 @@
   import Dialog from './Dialog.svelte';
   import SelectDemo from './Select.svelte';
   import List from './List.svelte';
+  import Radio from './Radio.svelte';
   import TextField from './TextField.svelte';
   import Theming from './Theming.svelte';
   import Typography from './Typography.svelte';
@@ -14,6 +15,7 @@
     button: ButtonDemo,
     dialog: Dialog,
     list: List,
+    radio: Radio,
     select: SelectDemo,
     textfield: TextField,
     theming: Theming,
