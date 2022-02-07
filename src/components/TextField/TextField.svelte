@@ -45,7 +45,7 @@
   const forwardEvents = forwardEventsBuilder(get_current_component());
 
   $: if (id === '') {
-    id = `s-input-${amountCreated++}`;
+    id = `s-text-input-${amountCreated++}`;
   }
   $: showHint = error || (persistentHint ? hint : focused && hint);
   $: labelOnTop = Boolean(placeholder || focused || value);

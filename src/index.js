@@ -6,4 +6,5 @@ export { default as Dialog } from './components/Dialog/Dialog.svelte';
 export { default as Select } from './components/Select/Select.svelte';
 export { default as List } from './components/List/List.svelte';
 export { default as ListItem } from './components/List/ListItem.svelte';
+export { default as RadioGroup } from './components/Radio/RadioGroup.svelte';
 export { fontLoaded, theme } from './js/store.js';
