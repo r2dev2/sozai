@@ -3,8 +3,8 @@
 </script>
 
 <script>
-  import { radioKey } from 'src/js/constants';
-  import { group } from 'src/js/group';
+  import { radioKey } from '../../js/constants.js';
+  import { group } from '../../js/group.js';
 
   import { createEventDispatcher, onMount, setContext } from 'svelte';
 

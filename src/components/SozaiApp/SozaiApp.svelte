@@ -97,6 +97,8 @@
     --hint-color: #757575; /* Text color for hints in textfields */
     --dialog-bg-color: #ffffff; /* Background color for dialogs */
     --listitem-subtitle-opacity: 0.6; /* Text opacity of listitem subtitles */
+    --radio-inactive-color: #424242; /* Color for inactive radio bubble */
+    --radio-text-color: #424242; /* Color for radio text */
 
     /**
       Section: Component sizes
@@ -136,6 +138,8 @@
     --input-border-color: #eeeeee;
     --listitem-subtitle-opacity: 0.7;
     --primary-color: #2196f3;
+    --radio-inactive-color: #f5f5f5;
+    --radio-text-color: #bcbcbc;
     --text-color: #f5f5f5;
   }
 
