@@ -5,6 +5,7 @@
 <script>
   import { radioKey } from '../../js/constants.js';
   import { getColor } from '../../js/utils.js';
+  import ripple from '../../js/ripple.js';
   import { groupItem } from '../../js/group.js';
   import Icon from '../Icon/Icon.svelte';
 
@@ -43,7 +44,13 @@
     };
   });
 
-  $: style = `--color: ${getColor(color)}`;
+  $: radioIconColor = selected
+    ? getColor(color)
+    : 'var(--radio-inactive-color)';
+
+  $: style = `--color: ${getColor(
+    color
+  )}; --radio-icon-color: ${radioIconColor}`;
 </script>
 
 <div
@@ -54,7 +61,7 @@
   {style}
 >
   <slot name="prepend">
-    <Icon color={selected ? getColor(color) : 'var(--radio-inactive-color)'}>
+    <Icon color={radioIconColor}>
       {selected ? 'radio_button_checked' : 'radio_button_unchecked'}
     </Icon>
   </slot>
@@ -78,6 +85,7 @@
 
   .s-radio > label {
     color: var(--radio-text-color);
+    padding-left: 0.25rem;
   }
 
   .s-radio > :global(*) {
@@ -86,9 +94,29 @@
 
   input {
     position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
     width: 1.5rem;
     height: 1.5rem;
     opacity: 0;
     user-select: none;
+  }
+
+  label::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 0.75rem;
+    background-color: var(--radio-icon-color);
+    opacity: 0;
+    transform: scale(1.75);
+  }
+
+  input:hover + label::before {
+    opacity: 0.2;
   }
 </style>
