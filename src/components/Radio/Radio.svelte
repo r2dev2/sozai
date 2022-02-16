@@ -67,15 +67,12 @@
   </slot>
   <div
     class="ripple-container"
-    on:click={() => console.log('clicked')}
     use:ripple={{
       centered: true,
       color: 'var(--radio-icon-color)',
     }}
   />
-  <span class="input-container">
-    <input {id} type="radio" name={$name} {value} />
-  </span>
+  <input {id} type="radio" name={$name} {value} />
   <label for={id}>
     <slot />
   </label>
@@ -83,6 +80,8 @@
 
 <style>
   .s-radio {
+    --input-width: 1.5rem;
+    --hover-scale: 1.75;
     position: relative;
     text-align: left;
     margin-bottom: 0.5rem;
@@ -107,6 +106,7 @@
     top: 0;
     left: 0;
     margin: 0;
+    z-index: -1;
     width: 1.5rem;
     height: 1.5rem;
     opacity: 0;
@@ -116,25 +116,12 @@
   .ripple-container {
     position: absolute;
     top: 50%;
-    left: -0.75rem;
-    width: 2.625rem;
-    height: 2.625rem;
-    z-index: 9;
+    left: calc(-0.5 * var(--input-width));
+    width: calc(var(--input-width) * var(--hover-scale));
+    height: calc(var(--input-width) * var(--hover-scale));
     transform: translate(2px, -50%);
     border-radius: 50%;
     overflow: hidden;
-  }
-
-  .input-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin: 0;
-    width: 1.5rem;
-    height: 1.5rem;
-    border-radius: 50%;
-    overflow: hidden;
-    transform: scale(1.75);
   }
 
   .ripple-container::before {
@@ -142,6 +129,7 @@
     position: absolute;
     top: 0;
     left: 0;
+    z-index: -1;
     width: 100%;
     height: 100%;
     border-radius: 50%;
