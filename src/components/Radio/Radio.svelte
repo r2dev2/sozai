@@ -65,13 +65,15 @@
       {selected ? 'radio_button_checked' : 'radio_button_unchecked'}
     </Icon>
   </slot>
-  <span
+  <div
+    class="ripple-container"
+    on:click={() => console.log('clicked')}
     use:ripple={{
       centered: true,
       color: 'var(--radio-icon-color)',
     }}
-    class="input-container"
-  >
+  />
+  <span class="input-container">
     <input {id} type="radio" name={$name} {value} />
   </span>
   <label for={id}>
@@ -111,6 +113,18 @@
     user-select: none;
   }
 
+  .ripple-container {
+    position: absolute;
+    top: 50%;
+    left: -0.75rem;
+    width: 2.625rem;
+    height: 2.625rem;
+    z-index: 9;
+    transform: translate(2px, -50%);
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
   .input-container {
     position: absolute;
     top: 0;
@@ -123,20 +137,19 @@
     transform: scale(1.75);
   }
 
-  .input-container::before {
+  .ripple-container::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
-    width: 1.5rem;
-    height: 1.5rem;
-    border-radius: 0.75rem;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
     background-color: var(--radio-icon-color);
     opacity: 0;
-    transform: scale(1.75);
   }
 
-  .input-container:hover::before {
+  .ripple-container:hover::before {
     opacity: 0.2;
   }
 </style>
