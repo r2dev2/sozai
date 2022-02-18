@@ -4,21 +4,15 @@
 
 <script>
   import { radioKey } from '../../js/constants.js';
-  import { group } from '../../js/group.js';
+  import RadioCheckboxGroup from '../Util/RadioCheckboxGroup.svelte';
 
-  import { createEventDispatcher, onMount, setContext } from 'svelte';
+  import { createEventDispatcher } from 'svelte';
 
   import { writable } from 'svelte/store';
 
   /** @type {number | null} */
   export let selected = null;
   export let name = '';
-
-  /** @type {HTMLElement | undefined}*/
-  let div;
-
-  const nameStore = writable(name);
-  setContext(radioKey, { name: nameStore });
 
   const dispatch = createEventDispatcher();
   /** @type {(s: number | null) => number[]}*/
@@ -36,25 +30,14 @@
   $: if (name === '') {
     name = `s-radio-input-${amountCreated++}`;
   }
-
-  $: nameStore.set(name);
-
-  onMount(() => {
-    if (!div) return;
-    const { destroy } = group(
-      radioKey,
-      div,
-      writable(true),
-      writable(false),
-      indexesSelected
-    );
-
-    return () => {
-      destroy();
-    };
-  });
 </script>
 
-<div bind:this={div} class="s-component s-radiogroup" role="radiogroup">
+<RadioCheckboxGroup
+  class="s-radiogroup"
+  role="radiogroup"
+  key={radioKey}
+  selected={indexesSelected}
+  {name}
+>
   <slot />
-</div>
+</RadioCheckboxGroup>
