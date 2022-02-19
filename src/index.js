@@ -8,4 +8,6 @@ export { default as List } from './components/List/List.svelte';
 export { default as ListItem } from './components/List/ListItem.svelte';
 export { default as RadioGroup } from './components/Radio/RadioGroup.svelte';
 export { default as Radio } from './components/Radio/Radio.svelte';
+export { default as CheckboxGroup } from './components/Checkbox/CheckboxGroup.svelte';
+export { default as Checkbox } from './components/Checkbox/Checkbox.svelte';
 export { fontLoaded, theme } from './js/store.js';

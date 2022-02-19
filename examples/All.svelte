@@ -3,6 +3,7 @@
 
   import { theme, Button, Select, SozaiApp } from '../src';
   import ButtonDemo from './Button.svelte';
+  import Checkbox from './Checkbox.svelte';
   import Dialog from './Dialog.svelte';
   import SelectDemo from './Select.svelte';
   import List from './List.svelte';
@@ -13,6 +14,7 @@
 
   const components = {
     button: ButtonDemo,
+    checkbox: Checkbox,
     dialog: Dialog,
     list: List,
     radio: Radio,
