@@ -2,12 +2,10 @@
   import { List, ListItem } from '..';
   import Example from './Example.svelte';
   import Examples from './Examples.svelte';
-
-  const filename = 'List.svelte';
 </script>
 
-<Examples name="List">
-  <Example name="basic-list" {filename}>
+<Examples name="List" filename="List.svelte">
+  <Example name="basic-list">
     <List>
       <ListItem>
         <div slot="title">Single-line item</div>
@@ -19,7 +17,7 @@
     </List>
   </Example>
 
-  <Example name="icon-list" {filename}>
+  <Example name="icon-list">
     <!-- Use the select prop to allow selection of items -->
     <!-- May also bind:selected -->
     <List selectable on:change={(e) => console.log(e.detail.selected)}>
@@ -34,7 +32,7 @@
       </ListItem>
     </List>
   </Example>
-  <Example name="multiselect-icon-list" {filename}>
+  <Example name="multiselect-icon-list">
     <!-- Use the multiselect prop to allow selection of multiple items-->
     <List
       multiselect

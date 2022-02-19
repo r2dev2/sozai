@@ -3,13 +3,12 @@
   import Example from './Example.svelte';
   import Examples from './Examples.svelte';
 
-  const filename = 'Dialog.svelte';
   let showFirstDialog = false;
   let showSecondDialog = false;
 </script>
 
-<Examples>
-  <Example name="basic-dialog" {filename}>
+<Examples name="Dialog" filename="Dialog.svelte">
+  <Example name="basic-dialog">
     <!-- showFirstDialog declared beforehand -->
     <Dialog bind:value={showFirstDialog}>
       <h5 slot="title">What do you think?</h5>
@@ -25,7 +24,7 @@
     <Button on:click={() => (showFirstDialog = true)}>Show Dialog</Button>
   </Example>
 
-  <Example name="persistent-dialog" {filename}>
+  <Example name="persistent-dialog">
     <Dialog persistent bind:value={showSecondDialog}>
       <h5 slot="title">Do you think you can close me by clicking outside?</h5>
       <p>Dewit</p>

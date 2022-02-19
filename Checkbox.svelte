@@ -5,12 +5,10 @@
 
   /** @type {number[]}*/
   let nums = [];
-
-  const filename = 'Checkbox.svelte';
 </script>
 
-<Examples name="Checkbox">
-  <Example name="standard-checkbox" {filename}>
+<Examples name="Checkbox" filename="Checkbox.svelte">
+  <Example name="standard-checkbox">
     <!-- Default Checkbox -->
     <CheckboxGroup
       bind:selected={nums}
@@ -22,7 +20,7 @@
     </CheckboxGroup>
   </Example>
 
-  <Example name="colored-checkbox" {filename}>
+  <Example name="colored-checkbox">
     <!-- Checkboxes can be of different colors -->
     <CheckboxGroup>
       <Checkbox color="blue">Checkbox 1</Checkbox>

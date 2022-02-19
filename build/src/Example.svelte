@@ -3,10 +3,14 @@
   import 'prism-svelte';
   import 'prismjs/themes/prism.css';
 
-  import { getExample } from './example.js';
+  import { getContext } from 'svelte';
 
-  export let filename = '';
+  import { getExample } from './example.js';
+  import { exampleFilenameKey } from './constants.js';
+
   export let name = '';
+
+  const filename = /** @type {string} */ (getContext(exampleFilenameKey));
 
   $: exampleSource = getExample(filename, name);
 </script>

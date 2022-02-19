@@ -5,12 +5,10 @@
 
   /** @type {number | null}*/
   let num = null;
-
-  const filename = 'Radio.svelte';
 </script>
 
-<Examples name="Radio">
-  <Example name="standard-radio" {filename}>
+<Examples name="Radio" filename="Radio.svelte">
+  <Example name="standard-radio">
     <!-- Default Radio -->
     <RadioGroup
       bind:selected={num}
@@ -22,7 +20,7 @@
     </RadioGroup>
   </Example>
 
-  <Example name="colored-radio" {filename}>
+  <Example name="colored-radio">
     <!-- Radios can be of different colors -->
     <RadioGroup>
       <Radio color="blue">Radio 1</Radio>
