@@ -35,3 +35,5 @@ export const exampleTheming = `
   }
 </style>
 `.trim();
+
+export const exampleFilenameKey = Symbol();

@@ -3,8 +3,6 @@
   import Example from './Example.svelte';
   import Examples from './Examples.svelte';
 
-  const filename = 'Select.svelte';
-
   const items = [
     { value: 1, text: 'one' },
     { value: 2, text: 'two' },
@@ -13,20 +11,20 @@
   ];
 </script>
 
-<Examples name="Select">
-  <Example name="standard-select" {filename}>
+<Examples name="Select" filename="Select.svelte">
+  <Example name="standard-select">
     <Select label="Standard" {items} />
   </Example>
 
-  <Example name="dense-select" {filename}>
+  <Example name="dense-select">
     <Select label="Dense" dense {items} />
   </Example>
 
-  <Example name="outlined-select" {filename}>
+  <Example name="outlined-select">
     <Select label="Outlined" outlined {items} />
   </Example>
 
-  <Example name="dense-outlined-select" {filename}>
+  <Example name="dense-outlined-select">
     <Select label="Outlined Dense" outlined dense {items} />
   </Example>
 </Examples>
