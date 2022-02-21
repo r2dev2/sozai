@@ -79,7 +79,7 @@
     border-radius: var(--border-radius-rounded);
     border-width: var(--border-width);
     box-shadow: var(--shadow);
-    border-style: solid;
+    border: none;
     overflow: hidden;
     transition: var(--transition-duration) ease-in;
   }
@@ -100,6 +100,10 @@
 
   .block {
     width: 100%;
+  }
+
+  .outlined {
+    border: solid 1px;
   }
 
   .outlined,

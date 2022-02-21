@@ -92,14 +92,22 @@ function RippleStart(e, options = {}) {
  * Destroys the ripple, slowly fading it out.
  *
  * @param {HTMLElement} ripple
+ * @return {Promise<void>}
  */
 function RippleStop(ripple) {
-  if (ripple) {
-    ripple.addEventListener('transitionend', (e) => {
-      if (e.propertyName === 'opacity') ripple.remove();
-    });
-    ripple.style.opacity = '0';
-  }
+  return new Promise((res, rej) => {
+    if (ripple) {
+      ripple.addEventListener('transitionend', (e) => {
+        if (e.propertyName === 'opacity') {
+          ripple.remove();
+          res();
+        }
+      });
+      ripple.style.opacity = '0';
+    } else {
+      rej();
+    }
+  });
 }
 
 /**
@@ -112,19 +120,19 @@ function RippleStop(ripple) {
 export default (node, _options = {}) => {
   let options = _options;
   let destroyed = false;
-  /** @type {HTMLElement | undefined} */
-  let ripple;
+  /** @type {Set<HTMLElement>} */
+  const ripples = new Set();
   let keyboardActive = false;
   /** @type {(e: KeyboardEvent | TouchEvent | MouseEvent) => void} */
   const handleStart = (e) => {
-    if (ripple) ripple.remove();
-    ripple = RippleStart(e, options);
+    ripples.add(RippleStart(e, options));
   };
-  const handleStop = () => ripple && RippleStop(ripple);
+  const handleStop = () =>
+    ripples.forEach((r) => r && RippleStop(r).then(() => ripples.delete(r)));
   /** @type {(e: KeyboardEvent) => void} */
   const handleKeyboardStart = (e) => {
     if (!keyboardActive && (e.keyCode === 13 || e.keyCode === 32)) {
-      ripple = RippleStart(e, { ...options, centered: true });
+      ripples.add(RippleStart(e, { ...options, centered: true }));
       keyboardActive = true;
     }
   };
