@@ -1,7 +1,3 @@
-<script context="module">
-  console.warn('<Select /> is not completed yet');
-</script>
-
 <script>
   import { createEventDispatcher } from 'svelte';
 
@@ -60,6 +56,12 @@
       );
     }
   };
+
+  // chrome unfocuses textfields when selected so we need to manually 1-way bind
+  $: active_ = active;
+  $: if (active_ !== active) {
+    active_ = active;
+  }
 </script>
 
 <div
@@ -71,8 +73,8 @@
 >
   <TextField
     value={items[value ?? -1]?.text ?? ''}
-    disabled={active}
-    focused={active}
+    bind:disabled={active_}
+    bind:focused={active_}
     on:click={() => (active = true)}
     {label}
     {outlined}
@@ -123,7 +125,7 @@
     transition: var(--select-activate-duration) ease-out;
   }
 
-  .s-select:focus-within > .dropdown-icon :global(i) {
+  .s-select.active > .dropdown-icon :global(i) {
     color: var(--primary-color);
     transform: rotate(180deg);
   }
