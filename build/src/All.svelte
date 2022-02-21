@@ -5,9 +5,10 @@
   import ButtonDemo from './Button.svelte';
   import Checkbox from './Checkbox.svelte';
   import Dialog from './Dialog.svelte';
-  import SelectDemo from './Select.svelte';
   import List from './List.svelte';
   import Radio from './Radio.svelte';
+  import SelectDemo from './Select.svelte';
+  import Slider from './Slider.svelte';
   import TextField from './TextField.svelte';
   import Theming from './Theming.svelte';
   import Typography from './Typography.svelte';
@@ -19,6 +20,7 @@
     list: List,
     radio: Radio,
     select: SelectDemo,
+    slider: Slider,
     textfield: TextField,
     theming: Theming,
     typography: Typography,
