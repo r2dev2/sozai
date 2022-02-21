@@ -117,6 +117,7 @@ export default (node, _options = {}) => {
   let keyboardActive = false;
   /** @type {(e: KeyboardEvent | TouchEvent | MouseEvent) => void} */
   const handleStart = (e) => {
+    if (ripple) ripple.remove();
     ripple = RippleStart(e, options);
   };
   const handleStop = () => ripple && RippleStop(ripple);
