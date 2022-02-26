@@ -14,15 +14,28 @@
   /** @type {HTMLElement | undefined}*/
   let thumbShadowEl;
 
+  /** @type {(x: number, y: number) => void}*/
+  const updateThumbHovered = (x, y) => {
+    if (!thumbShadowEl) return;
+    const boundingRect = thumbShadowEl.getBoundingClientRect();
+    thumbHovered =
+      x >= boundingRect.left &&
+      x <= boundingRect.right &&
+      y >= boundingRect.top &&
+      y <= boundingRect.bottom;
+  };
+
   /** @type {(e: MouseEvent) => void}*/
   const handleMouseMove = (e) => {
     if (!thumbShadowEl || mouseIsDown) return;
-    const boundingRect = thumbShadowEl.getBoundingClientRect();
-    thumbHovered =
-      e.clientX >= boundingRect.left &&
-      e.clientX <= boundingRect.right &&
-      e.clientY >= boundingRect.top &&
-      e.clientY <= boundingRect.bottom;
+    updateThumbHovered(e.clientX, e.clientY);
+  };
+
+  /** @type {(e: TouchEvent) => void}*/
+  const handleTouchStart = (e) => {
+    if (!thumbShadowEl || mouseIsDown || e.touches[0] === undefined) return;
+    mouseIsDown = true;
+    updateThumbHovered(e.touches[0].clientX, e.touches[0].clientY);
   };
 
   $: filledPercent = (value - min) / (max - min);
@@ -32,7 +45,9 @@
 <svelte:window
   on:mousemove={handleMouseMove}
   on:mousedown={() => (mouseIsDown = true)}
+  on:touchstart={handleTouchStart}
   on:mouseup={() => (mouseIsDown = false)}
+  on:touchend={() => (mouseIsDown = false)}
 />
 
 <div
