@@ -35,16 +35,16 @@
   on:mouseup={() => (mouseIsDown = false)}
 />
 
-<div class="s-component s-slider" {style}>
+<div
+  class="s-component s-slider"
+  class:chrome={navigator.userAgent.includes('Chrome')}
+  {style}
+>
   <div class="slider-container">
-    <!-- svelte-ignore a11y-mouse-events-have-key-events -->
     <div
       bind:this={thumbShadowEl}
       class="thumb-shadow"
       class:hover={thumbHovered}
-      on:mouseover={() => console.log('mouseover')}
-      on:mouseenter={() => (thumbHovered = true)}
-      on:mouseleave={() => (thumbHovered = false)}
     />
     <input type="range" {min} {max} {step} bind:value tabindex="0" />
   </div>
@@ -54,8 +54,13 @@
   .s-slider {
     --color: var(--primary-color);
     --thumb-size: 0.75rem;
-    --thumb-hover-size: 2.625rem;
+    --thumb-hover-scale: 3.5;
+    --thumb-vertical-translate: calc(-50% - 1.5px);
     padding: 2rem;
+  }
+
+  .s-slider.chrome {
+    --thumb-vertical-translate: -1.5px;
   }
 
   .slider-container {
@@ -69,28 +74,47 @@
     left: var(--thumb-dist);
     width: var(--thumb-size);
     height: var(--thumb-size);
-    transform: translate(
+    --transform: translate(
       calc(-50% - var(--thumb-size) / 2 + 1.5px),
-      calc(-50% - 1.5px)
+      var(--thumb-vertical-translate)
     );
+    transform: var(--transform);
     border-radius: 50%;
     opacity: 0.2;
     background: var(--color);
     pointer-events: none;
-    transition: width var(--slider-transition-duration) ease-out,
-      height var(--slider-transition-duration) ease-out;
+    transition: transform var(--slider-transition-duration) ease-out;
   }
 
   .thumb-shadow.hover {
-    width: var(--thumb-hover-size);
-    height: var(--thumb-hover-size);
+    transform: var(--transform) scale(var(--thumb-hover-scale));
   }
 
   .s-slider input {
     width: 100%;
     background-color: transparent;
+    -webkit-appearance: none;
+    appearance: none;
   }
 
+  /** Chrome*/
+  .s-slider input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 0.75rem;
+    height: 0.75rem;
+    background-color: var(--color);
+    border-radius: 50%;
+    border: none;
+    transform: translateY(-50%);
+  }
+
+  .s-slider input::-webkit-slider-runnable-track {
+    height: 2px;
+    background-color: var(--color);
+  }
+
+  /** Firefox (idk why we can't just use , to join selectors but it no work)*/
   .s-slider input::-moz-range-thumb {
     width: 0.75rem;
     height: 0.75rem;
