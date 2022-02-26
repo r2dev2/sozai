@@ -127,7 +127,7 @@
     --transition-duration: 200ms; /* Duration of transitions */
     --ripple-duration: 300ms; /* Duration of ripples */
     --select-activate-duration: 100ms; /* Duration of activate select fade */
-    --slider-transition-duration: 100ms; /* Duration of slider transitions */
+    --slider-transition-duration: 200ms; /* Duration of slider transitions */
   }
 
   :root[data-theme='dark'] {

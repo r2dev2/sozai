@@ -45,6 +45,7 @@
       bind:this={thumbShadowEl}
       class="thumb-shadow"
       class:hover={thumbHovered}
+      class:clicked={thumbHovered && mouseIsDown}
     />
     <input type="range" {min} {max} {step} bind:value tabindex="0" />
   </div>
@@ -55,6 +56,7 @@
     --color: var(--primary-color);
     --thumb-size: 0.75rem;
     --thumb-hover-scale: 3.5;
+    --thumb-clicked-scale: 4.5;
     --thumb-vertical-translate: calc(-50% - 1.5px);
     padding: 2rem;
   }
@@ -88,6 +90,10 @@
 
   .thumb-shadow.hover {
     transform: var(--transform) scale(var(--thumb-hover-scale));
+  }
+
+  .thumb-shadow.clicked {
+    transform: var(--transform) scale(var(--thumb-clicked-scale));
   }
 
   .s-slider input {
