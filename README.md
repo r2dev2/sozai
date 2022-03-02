@@ -36,6 +36,11 @@ And boom, we've set up a sozai app. No need to mess around with the bundler to c
 
 -- [@KentoNishi](https://github.com/KentoNishi) (named as one of the top 300 scholars in the 81st Regeneron Science Talent Search—the nation's oldest and most prestigious science and mathematics competition for high school seniors)
 
+!["sozai is what happens when ui frameworks actually work" - Anish](https://user-images.githubusercontent.com/50760816/156287622-f14e9b2e-f980-4ddb-be77-a9b77c90e089.png)
+
+-- [@anish-lakkapragada](https://github.com/anish-lakkapragada/) (made an ml library when he was 14 although not with sozai)
+
+
 
 ## Motivation
 
