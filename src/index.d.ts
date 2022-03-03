@@ -11,5 +11,6 @@ export { default as Radio } from './components/Radio/Radio.svelte';
 export { default as CheckboxGroup } from './components/Checkbox/CheckboxGroup.svelte';
 export { default as Checkbox } from './components/Checkbox/Checkbox.svelte';
 export { default as Slider } from './components/Slider/Slider.svelte';
+export { default as ProgressCircular } from './components/Progress/ProgressCircular.svelte';
 
 export { fontLoaded, theme } from './js/store.js';
