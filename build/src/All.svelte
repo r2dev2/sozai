@@ -6,6 +6,7 @@
   import Checkbox from './Checkbox.svelte';
   import Dialog from './Dialog.svelte';
   import List from './List.svelte';
+  import Progress from './Progress.svelte';
   import Radio from './Radio.svelte';
   import SelectDemo from './Select.svelte';
   import Slider from './Slider.svelte';
@@ -18,6 +19,7 @@
     checkbox: Checkbox,
     dialog: Dialog,
     list: List,
+    progress: Progress,
     radio: Radio,
     select: SelectDemo,
     slider: Slider,
