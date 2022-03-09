@@ -154,6 +154,7 @@
   }
 
   .sozai-app {
+    -webkit-tap-highlight-color: transparent;
     background-color: var(--app-bg-color);
     color: var(--text-color);
     font-family: roboto, medium;
