@@ -32,7 +32,6 @@
   };
 
   $: actualColor = getColor(color);
-  // $: ripple = createRipple((text || outlined) ? actualColor : '#FFFFFF');
   $: style_ = `--button-color: ${actualColor}; ${style}`.trim();
 </script>
 
