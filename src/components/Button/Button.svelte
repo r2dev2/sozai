@@ -50,7 +50,7 @@
   style={style_}
   on:click={toggleValue}
   use:forwardEvents
-  use:ripple
+  use:ripple={{ disabled }}
 >
   {#if icon}
     <div class="icon-content">
