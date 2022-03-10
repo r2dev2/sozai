@@ -32,7 +32,7 @@
 
   const paramComponentName = 'component';
   const paramComponent = Object.keys(components).indexOf(
-    new URLSearchParams(location.search).get(paramComponentName)
+    new URLSearchParams(location.search).get(paramComponentName) ?? ''
   );
 
   let toShow =
