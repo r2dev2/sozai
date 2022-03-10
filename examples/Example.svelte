@@ -30,4 +30,19 @@
   .example-content {
     text-align: center;
   }
+
+  tr {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @media screen and (max-width: 600px) {
+    tr {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-top: 2rem;
+      max-width: 90vw;
+    }
+  }
 </style>

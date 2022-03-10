@@ -118,8 +118,9 @@
   }
 
   .light-dark-toggle {
-    float: right;
-    margin-top: 0.5rem;
+    position: fixed;
+    top: 1.5rem;
+    right: 2rem;
   }
 
   header {
@@ -139,6 +140,18 @@
 
   header h1 {
     font-size: 3rem;
+  }
+
+  @media screen and (max-width: 600px) {
+    header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .demo-chooser {
+      width: 100%;
+    }
   }
 
   :root {
