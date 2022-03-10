@@ -18,10 +18,16 @@
 
 <style>
   table {
-    width: 100%;
+    max-width: 100%;
   }
 
   tr {
     display: none;
+  }
+
+  @media screen and (max-width: 600px) {
+    table {
+      padding-top: 3.5rem;
+    }
   }
 </style>
