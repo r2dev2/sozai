@@ -30,11 +30,15 @@
 
   const componentNames = Object.keys(components).map((text) => ({ text }));
 
-  let toShow = parseInt(
-    window.localStorage.getItem('com') ??
-      new URLSearchParams(location.search).get('com') ??
-      '0'
+  const paramComponentName = 'component';
+  const paramComponent = Object.keys(components).indexOf(
+    new URLSearchParams(location.search).get(paramComponentName)
   );
+
+  let toShow =
+    paramComponent !== -1
+      ? paramComponent
+      : parseInt(window.localStorage.getItem('com') ?? '0');
   const defaultTheme = window.localStorage.getItem('theme');
 
   if (defaultTheme) {
