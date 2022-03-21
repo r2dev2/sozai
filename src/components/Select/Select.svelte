@@ -57,6 +57,13 @@
     }
   };
 
+  /** @type {(e: MouseEvent) => void} */
+  const onTextFieldClick = e => {
+    e.preventDefault();
+    e.stopPropagation();
+    active = true;
+  };
+
   // chrome unfocuses textfields when selected so we need to manually 1-way bind
   $: active_ = active;
   $: if (active_ !== active) {
@@ -75,7 +82,7 @@
     value={items[value ?? -1]?.text ?? ''}
     bind:disabled={active_}
     bind:focused={active_}
-    on:click={() => (active = true)}
+    on:click={onTextFieldClick}
     {label}
     {outlined}
     {dense}
@@ -136,7 +143,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    padding: 0;
+    padding: 0.5rem 0;
     margin: 0;
     background-color: var(--app-bg-color);
     box-shadow: var(--select-shadow);
