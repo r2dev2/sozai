@@ -4,7 +4,6 @@ UI framework with vuetify-like material components built with Svelte
 
 ![scuffed logo](https://user-images.githubusercontent.com/50760816/156042159-65aa794f-38bc-4cbc-9848-59063e4eeca7.png)
 
-
 ## Usage
 
 I made the library to be as easy to setup as possible. No preprocessors for css or js are required.
